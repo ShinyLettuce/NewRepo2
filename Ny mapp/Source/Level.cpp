@@ -5,8 +5,8 @@ class Tile_system
 	Vector2 size = { 32, 32 };
 public:
 	
-	Vector2 position = {};
-	//tile type
+	Vector2 dimensions = {};
+	
 };
 
 
