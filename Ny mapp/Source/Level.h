@@ -7,14 +7,14 @@ public:
 	static const int size = 64;
 	const int cols = 8;
 	const int rows = 8;
-	int tiles[64] = { 2,2,2,2,2,2,2,2
-					 ,2,0,0,0,0,0,0,2
-					 ,2,1,0,0,0,0,0,2
-					 ,2,0,0,0,0,0,0,2
-					 ,2,0,0,0,0,0,0,2
-					 ,2,0,0,0,0,0,0,2
-					 ,2,0,0,0,0,0,0,2
-					 ,2,2,2,2,2,2,2,2 };
+	int tiles[64] = { 1,0,1,0,1,0,1,0
+					 ,0,1,0,1,0,1,0,1
+					 ,1,0,1,0,1,0,1,0
+					 ,0,1,0,1,0,1,0,1
+					 ,1,0,1,0,1,0,1,0
+					 ,0,1,0,1,0,1,0,1
+					 ,1,0,1,0,1,0,1,0
+					 ,0,1,0,1,0,1,0,1 };
 
 	Color GetColor(int type);
 	void render_level();
@@ -25,6 +25,7 @@ class Entity
 {
 public:
 	Vector2 position = { 16,16 };
+	int size = 32;
 
 	virtual void render()
 	{
