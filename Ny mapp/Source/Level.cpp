@@ -26,7 +26,7 @@ void render()
 		for (int i_2 = 0; i < 8; i++)
 		{
 			int  type = tiles[i*i_2];
-			DrawRectangle(Tile_system::size *i_2, Tile_system::size*i, Tile_system::size, Tile_system::size, GetColor(type));
+			DrawRectangle(Tile_system::size * i_2, Tile_system::size * i, Tile_system::size, Tile_system::size, GetColor(type));
 		}
 	}
 }
