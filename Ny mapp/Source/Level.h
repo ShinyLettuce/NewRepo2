@@ -25,6 +25,7 @@ class Entity
 {
 public:
 	Vector2 position = { 16,16 };
+	int size = 32;
 
 	virtual void render()
 	{

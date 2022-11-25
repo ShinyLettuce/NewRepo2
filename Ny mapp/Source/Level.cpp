@@ -10,7 +10,7 @@ Color Tile_system::GetColor(int type)
 	}
 	else if (type == 1)
 	{
-		return { GREEN };
+		return { WHITE };
 	}
 	else
 		return{ BLACK };
@@ -22,10 +22,10 @@ void Tile_system::render_level()
 	
 	for(int c = 0;c<cols;c++)
 	{ 
-		for (int i_2 = 0; i_2 <rows; i_2++)
+		for (int r = 0; r <rows; r++)
 		{
 			int  type = tiles[allyourbase];
-			DrawRectangle(0 + size * i_2, 0 + (size * c), size, size, GetColor(type));
+			DrawRectangle(0 + size * r, 0 + (size * c), size, size, GetColor(type));
 			
 			allyourbase++;
 		}
@@ -35,13 +35,13 @@ void Tile_system::render_level()
 
 void Box::render()
 {
-	DrawRectangle((int)position.x, (int)position.y, 32, 32, BROWN);
+	DrawRectangle((int)position.x, (int)position.y, size, size, BROWN);
 }
 
 
 void Player::render()
 {
-	DrawRectangle((int)position.x,(int)position.y, 32, 32, RED);
+	DrawRectangle((int)position.x,(int)position.y, size, size, RED);
 }
 
 void Player::update()
