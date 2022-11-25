@@ -1,25 +1,22 @@
 #include "raylib.h"
+#include "Level.h"
 
 
-class Tile_system
+Color Tile_system::GetColor(int type)
 {
-public:
-	static const int size = 64;
-	const int cols = 8;
-	const int rows = 8;
-	int tiles[64] = { 1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1 };
-	
-Color GetColor(int type)
-{
-	if (type == 1)
+	if (type == 2)
 	{
-		return { 255,255,255,255 };
+		return { GRAY };
+	}
+	else if (type == 1)
+	{
+		return { WHITE };
 	}
 	else
-		return{ 0,0,0,255 };
+		return{ BLACK };
 }
 
-void render_level()
+void Tile_system::render_level()
 {
 	int allyourbase = 0;
 	
@@ -27,7 +24,6 @@ void render_level()
 	{ 
 		for (int i_2 = 0; i_2 <rows; i_2++)
 		{
-			BeginDrawing();
 			int  type = tiles[allyourbase];
 			DrawRectangle(0 + size * i_2, 0 + (size * c), size, size, GetColor(type));
 			
@@ -36,77 +32,59 @@ void render_level()
 	}
 }
 
-};
 
-
-class Entities 
+void Box::render()
 {
-public:
-	Vector2 position = {16,16};
+	DrawRectangle((int)position.x, (int)position.y, 32, 32, BROWN);
+}
 
-	virtual void render()
-	{
-	}
 
-	virtual void update()
-	{
-	}
-
-};
-
-class Box : Entities
+void Player::render()
 {
-public:
-	Vector2 position = { 80,16 };
+	DrawRectangle((int)position.x,(int)position.y, 32, 32, RED);
+}
 
-	void render()
-	{
-		DrawRectangle((int)position.x, (int)position.y, 32, 32, BROWN);
-	}
-};
-
-class Player : Entities
+void Player::update()
 {
-public:
-
-	void render()
+	if (IsKeyPressed(KEY_RIGHT))
 	{
-		DrawRectangle((int)position.x,(int)position.y, 32, 32, RED);
+		position.x += 64.f;
 	}
-
-	void update()
-	{
-		if (IsKeyPressed(KEY_RIGHT))
-		{
-			position.x += 64.f;
-		}
 		
-		if (IsKeyPressed(KEY_LEFT))
-		{
-			position.x -= 64.f;
-		}
-
-		if (IsKeyPressed(KEY_DOWN))
-		{
-			position.y += 64.f;
-		}
-
-		if (IsKeyPressed(KEY_UP))
-		{
-			position.y -= 64.f;
-		}
+	if (IsKeyPressed(KEY_LEFT))
+	{
+		position.x -= 64.f;
 	}
 
-};
+	if (IsKeyPressed(KEY_DOWN))
+	{
+		position.y += 64.f;
+	}
 
+	if (IsKeyPressed(KEY_UP))
+	{
+		position.y -= 64.f;
+	}
+}
 
-
-class Level
+void Level::level_init()
 {
-	void level_init();
-	void level_update();
-	void level_render();
-};
+	mario.position = { 80,80 };
+	boxxo.position = { 80,144 };
+}
+
+void Level::level_update()
+{
+	mario.update();
+	boxxo.update();
+}
+
+void Level::level_render()
+{
+	tiles.render_level();
+	mario.render();
+	boxxo.render();
+}
 
 
 

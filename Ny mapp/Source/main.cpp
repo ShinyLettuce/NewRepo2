@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "level.cpp"
+#include "level.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -15,9 +15,9 @@ int main(void)
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
-        Tile_system tiles; 
-        Player mario;
-        Box boxxo;
+    
+    Level level;
+    level.level_init();
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -30,18 +30,10 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        //ClearBackground(RAYWHITE);
 
+        level.level_update();
+        level.level_render();
 
-        
-
-        mario.update();
-
-        tiles.render_level();
-        mario.render();
-        boxxo.render();
-
-        //DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
