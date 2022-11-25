@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Tilesetidea.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
