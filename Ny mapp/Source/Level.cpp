@@ -1,38 +1,112 @@
 #include "raylib.h"
 
+
 class Tile_system
 {
 public:
-	static const int size = 32;
+	static const int size = 64;
 	const int cols = 8;
 	const int rows = 8;
-	int tiles[64] = { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 };
+	int tiles[64] = { 1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1 };
 	
 Color GetColor(int type)
 {
-	if (type == 0)
+	if (type == 1)
 	{
 		return { 255,255,255,255 };
 	}
 	else
-		return{ 0,0,0,0 };
+		return{ 0,0,0,255 };
 }
 
-void render()
+void render_level()
 {
+	int allyourbase = 0;
 	
-	for(int i= 0;i<8;i++)
+	for(int c = 0;c<cols;c++)
 	{ 
-		for (int i_2 = 0; i < 8; i++)
+		for (int i_2 = 0; i_2 <rows; i_2++)
 		{
-			int  type = tiles[i*i_2];
-			DrawRectangle(Tile_system::size * i_2, Tile_system::size * i, Tile_system::size, Tile_system::size, GetColor(type));
+			BeginDrawing();
+			int  type = tiles[allyourbase];
+			DrawRectangle(0 + size * i_2, 0 + (size * c), size, size, GetColor(type));
+			
+			allyourbase++;
 		}
 	}
 }
 
 };
 
+
+class Entities 
+{
+public:
+	Vector2 position = {16,16};
+
+	virtual void render()
+	{
+	}
+
+	virtual void update()
+	{
+	}
+
+};
+
+class Box : Entities
+{
+public:
+	Vector2 position = { 80,16 };
+
+	void render()
+	{
+		DrawRectangle((int)position.x, (int)position.y, 32, 32, BROWN);
+	}
+};
+
+class Player : Entities
+{
+public:
+
+	void render()
+	{
+		DrawRectangle((int)position.x,(int)position.y, 32, 32, RED);
+	}
+
+	void update()
+	{
+		if (IsKeyPressed(KEY_RIGHT))
+		{
+			position.x += 64.f;
+		}
+		
+		if (IsKeyPressed(KEY_LEFT))
+		{
+			position.x -= 64.f;
+		}
+
+		if (IsKeyPressed(KEY_DOWN))
+		{
+			position.y += 64.f;
+		}
+
+		if (IsKeyPressed(KEY_UP))
+		{
+			position.y -= 64.f;
+		}
+	}
+
+};
+
+
+
+class Level
+{
+	void level_init();
+	void level_update();
+	void level_render();
+};
 
 
 
