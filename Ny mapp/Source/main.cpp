@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "level.cpp"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -26,9 +27,11 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        //ClearBackground(RAYWHITE);
 
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+        Tile_system tiles; 
+        tiles.render();
+        //DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
