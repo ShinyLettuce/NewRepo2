@@ -10,7 +10,7 @@ Color Tile_system::GetColor(int type)
 	}
 	else if (type == 1)
 	{
-		return { BLUE };
+		return { GREEN };
 	}
 	else
 		return{ BLACK };
