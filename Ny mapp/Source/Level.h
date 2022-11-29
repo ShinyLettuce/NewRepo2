@@ -65,9 +65,9 @@ public:
 class Level
 {
 public:
+	Tile_system tiles;
 	Player mario;
 	Box boxxo;
-	Tile_system tiles;
 
 	void level_init();
 	void level_update();
