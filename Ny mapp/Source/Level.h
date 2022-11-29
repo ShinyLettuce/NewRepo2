@@ -21,11 +21,22 @@ public:
 
 };
 
+const enum face_directions
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+};
+
 class Entity
 {
+private:
+
 public:
 	Vector2 position = { 16,16 };
 	int size = 32;
+	int face_directions = UP;
 
 	virtual void render()
 	{
@@ -41,6 +52,7 @@ class Box : public Entity
 {
 public:
 	void render();
+	void update();
 };
 
 class Player : public Entity

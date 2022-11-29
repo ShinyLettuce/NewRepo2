@@ -38,6 +38,24 @@ void Box::render()
 	DrawRectangle((int)position.x, (int)position.y, size, size, BROWN);
 }
 
+void Box::update()
+{
+	switch (face_directions)
+	{
+	case RIGHT:
+		position.x += 64.f;
+		break;
+	case LEFT:
+		position.x -= 64.f;
+		break;
+	case DOWN:
+		position.y += 64.f;
+		break;
+	case UP:
+		position.y -= 64.f;
+		break;
+	}
+}
 
 void Player::render()
 {
@@ -46,24 +64,20 @@ void Player::render()
 
 void Player::update()
 {
-	if (IsKeyPressed(KEY_RIGHT))
+	switch (face_directions)
 	{
+	case RIGHT:
 		position.x += 64.f;
-	}
-
-	if (IsKeyPressed(KEY_LEFT))
-	{
+		break;
+	case LEFT:
 		position.x -= 64.f;
-	}
-
-	if (IsKeyPressed(KEY_DOWN))
-	{
+		break;
+	case DOWN:
 		position.y += 64.f;
-	}
-
-	if (IsKeyPressed(KEY_UP))
-	{
+		break;
+	case UP:
 		position.y -= 64.f;
+		break;
 	}
 }
 
@@ -75,8 +89,49 @@ void Level::level_init()
 
 void Level::level_update()
 {
-	mario.update();
-	boxxo.update();
+	if (IsKeyPressed(KEY_RIGHT))
+	{
+		mario.face_directions = RIGHT;
+		if (mario.position.x + 64.f == boxxo.position.x && mario.position.y == boxxo.position.y)
+		{
+			boxxo.face_directions = RIGHT;
+			boxxo.update();
+		}
+		mario.update();
+	}
+
+	if (IsKeyPressed(KEY_LEFT))
+	{
+		mario.face_directions = LEFT;
+		if (mario.position.x - 64.f == boxxo.position.x && mario.position.y == boxxo.position.y)
+		{
+			boxxo.face_directions = LEFT;
+			boxxo.update();
+		}
+		mario.update();
+	}
+
+	if (IsKeyPressed(KEY_DOWN))
+	{
+		mario.face_directions = DOWN;
+		if (mario.position.y + 64.f == boxxo.position.y && mario.position.x == boxxo.position.x)
+		{
+			boxxo.face_directions = DOWN;
+			boxxo.update();
+		}
+		mario.update();
+	}
+
+	if (IsKeyPressed(KEY_UP))
+	{
+		mario.face_directions = UP;
+		if (mario.position.y - 64.f == boxxo.position.y && mario.position.x == boxxo.position.x)
+		{
+			boxxo.face_directions = UP;
+			boxxo.update();
+		}
+		mario.update();
+	}
 }
 
 void Level::level_render()
