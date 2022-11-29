@@ -93,6 +93,8 @@ void Level::level_init()
 
 void Level::level_update()
 {
+	// TODO: implement new imput system (check image in discord channel)
+
 	if (IsKeyPressed(KEY_RIGHT))
 	{
 		mario.face_directions = RIGHT;
