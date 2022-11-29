@@ -45,7 +45,7 @@ class Entity
 private:
 
 public:
-	Vector2 position = { 16,16 };
+	Vector2 position = { 1.f,1.f };
 	int size = 32;
 	int face_directions = UP;
 	int tile_position_index = 0;
