@@ -30,6 +30,7 @@ public:
 
 	Color GetColor(int type);
 	void render_level();
+	Texture2D honeycomb = LoadTexture("beehive-tiles.png");
 
 };
 
@@ -72,6 +73,7 @@ class Box : public Entity
 public:
 	void render();
 	void update();
+	Texture2D flower = LoadTexture("flower.png");
 };
 
 class Player : public Entity
@@ -95,6 +97,7 @@ public:
 	Tile_system tiles;
 	Player mario;
 	Box boxxo;
+
 
 	/*
 	void clear_entitylist_B();

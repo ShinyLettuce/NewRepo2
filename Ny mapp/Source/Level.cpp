@@ -27,6 +27,10 @@ void Tile_system::render_level()
 		for (int r = 0; r < rows; r++)
 		{
 			int  type = tiles[allyourbase];
+			if (tiles[allyourbase] == 0)
+			{
+				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
+			} else
 			DrawRectangle(0 + size * r, 0 + (size * c), size, size, GetColor(type));
 
 			allyourbase++;
@@ -39,7 +43,8 @@ void Box::render()
 {
 	float pixel_x = (position.x * 64) + 16;
 	float pixel_y = (position.y * 64) + 16;
-	DrawRectangle((int)pixel_x, (int)pixel_y, size, size, BROWN);
+	//DrawRectangle((int)pixel_x, (int)pixel_y, size, size, BROWN);
+	DrawTexture(flower, (int)pixel_x, (int)pixel_y, WHITE);
 }
 
 void Box::update()
