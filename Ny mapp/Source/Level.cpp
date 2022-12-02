@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "Level.h"
+#include <list>
 
 
 Color Tile_system::GetColor(int type)
@@ -76,12 +77,27 @@ void Player::update()
 		input = { 0,-1 };
 	}
 }
+/*
+void Level::clear_entitylist_B()
+{
+	boxes_in_level.clear();
+}
 
+void Level::add_entity_B(const Box& b)
+{
+	boxes_in_level.push_back(b);
+}
+*/
 
 void Level::level_init()
 {
+	//TODO: make Vector that stores all created Entities in the level so the movement check could work better.
+	//boxes_in_level.clear();
+
 	mario.position = { 2,2 };
+		
 	boxxo.position = { 2,3 };
+	//add_entity_B(boxxo);
 }
 
 void Level::level_update()
