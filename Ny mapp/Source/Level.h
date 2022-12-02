@@ -58,6 +58,10 @@ public:
 	{
 	}
 
+	void move(Entity& e, Vector2 input)
+	{
+	}
+
 };
 
 class Box : public Entity
