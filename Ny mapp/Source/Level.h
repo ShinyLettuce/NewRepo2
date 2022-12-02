@@ -86,7 +86,7 @@ public:
 class Level
 {
 	void move_player(Player& p, Vector2 input);
-	void move_box(Box& b, Vector2 input);
+	bool move_box(Box & b, Vector2 input);
 
 public:
 	Tile_system tiles;

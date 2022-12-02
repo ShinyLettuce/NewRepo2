@@ -100,13 +100,15 @@ void Level::move_player(Player& p, Vector2 input)
 {
 	float newposx = mario.position.x + input.x;
 	float newposy = mario.position.y + input.y;
+
+	bool boxstayed = false;
 	
 	if (newposx == boxxo.position.x && newposy == boxxo.position.y)
 	{
-		move_box(boxxo, input);
+		boxstayed = move_box(boxxo, input);
 	}
 	
-	if (tiles.tiles[( (int)newposx + (8 * (int)newposy) ) ] != 1 )
+	if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
 	{
 		p.position.x += input.x;
 		p.position.y += input.y;
@@ -114,7 +116,7 @@ void Level::move_player(Player& p, Vector2 input)
 	return;
 }
 
-void Level::move_box(Box& b, Vector2 input)
+bool Level::move_box(Box& b, Vector2 input)
 {
 	float newposx = boxxo.position.x + input.x;
 	float newposy = boxxo.position.y + input.y;
@@ -124,7 +126,10 @@ void Level::move_box(Box& b, Vector2 input)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
+		return false;
 	}
+	else
+		return true;
 }
 
 void Level::level_render()
