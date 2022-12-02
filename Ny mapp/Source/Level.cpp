@@ -42,23 +42,7 @@ void Box::render()
 
 void Box::update()
 {
-	/*
-	switch (face_directions)
-	{
-	case RIGHT:
-		position.x += 1.f;
-		break;
-	case LEFT:
-		position.x -= 1.f;
-		break;
-	case DOWN:
-		position.y += 1.f;
-		break;
-	case UP:
-		position.y -= 1.f;
-		break;
-	}
-	*/
+	
 }
 
 
@@ -71,23 +55,7 @@ void Player::render()
 
 void Player::update()
 {
-	/*
-	switch (face_directions)
-	{
-	case RIGHT:
-		position.x += 1.f;
-		break;
-	case LEFT:
-		position.x -= 1.f;
-		break;
-	case DOWN:
-		position.y += 1.f;
-		break;
-	case UP:
-		position.y -= 1.f;
-		break;
-	}
-	*/
+	
 	if (IsKeyPressed(KEY_RIGHT))
 	{
 		input = { 1,0 };
