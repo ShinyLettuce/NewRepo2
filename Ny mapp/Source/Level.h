@@ -58,7 +58,7 @@ public:
 	{
 	}
 
-	virtual void move(Entity& e, Vector2 input)
+	virtual void move()
 	{
 	}
 
@@ -69,6 +69,7 @@ class Box : public Entity
 public:
 	void render();
 	void update();
+	void move(Box& b, Vector2 input);
 };
 
 class Player : public Entity
@@ -76,6 +77,7 @@ class Player : public Entity
 public:
 	void render();
 	void update();
+	void move(Player& p, Vector2 input);
 };
 
 class Level

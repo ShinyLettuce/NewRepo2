@@ -59,6 +59,11 @@ void Box::update()
 	}
 }
 
+void Box::move(Box& b, Vector2 input)
+{
+
+}
+
 void Player::render()
 {
 	float pixel_x = (position.x * 64) + 16;
@@ -83,6 +88,11 @@ void Player::update()
 		position.y -= 1.f;
 		break;
 	}
+}
+
+void Player::move(Player& p, Vector2 input)
+{
+
 }
 
 void Level::level_init()
