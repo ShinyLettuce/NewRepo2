@@ -138,7 +138,7 @@ bool Level::move_box(Box& b, Vector2 input)
 	float newposy = boxxo.position.y + input.y;
 
 
-	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
