@@ -58,7 +58,7 @@ public:
 	{
 	}
 
-	void move(Entity& e, Vector2 input)
+	virtual void move(Entity& e, Vector2 input)
 	{
 	}
 
