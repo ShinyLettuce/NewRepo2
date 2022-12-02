@@ -86,6 +86,10 @@ void Level::level_init()
 
 void Level::level_update()
 {
+	if (IsKeyPressed(KEY_DELETE))
+	{
+		level_init();
+	}
 	mario.update();
 
 	move_player(mario, mario.input);
