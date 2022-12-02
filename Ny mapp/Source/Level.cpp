@@ -2,6 +2,7 @@
 #include "Level.h"
 
 
+
 Color Tile_system::GetColor(int type)
 {
 	if (type == 2)
@@ -50,7 +51,8 @@ void Player::render()
 {
 	float pixel_x = (position.x * 64) + 16;
 	float pixel_y = (position.y * 64) + 16;
-	DrawRectangle((int)pixel_x, (int)pixel_y, size, size, RED);
+	//DrawRectangle((int)pixel_x, (int)pixel_y, size, size, RED);
+	DrawTexture(Bee, (int)pixel_x, (int)pixel_y, WHITE);
 }
 
 void Player::update()

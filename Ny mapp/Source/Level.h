@@ -77,6 +77,7 @@ class Player : public Entity
 {
 public:
 	Vector2 input = { 0,0 };
+	Texture2D Bee = LoadTexture("beePlayer1.png");
 
 	void render();
 	void update();
