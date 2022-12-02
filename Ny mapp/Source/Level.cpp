@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "Level.h"
+#include <list>
 
 
 
@@ -78,12 +79,27 @@ void Player::update()
 		input = { 0,-1 };
 	}
 }
+/*
+void Level::clear_entitylist_B()
+{
+	boxes_in_level.clear();
+}
 
+void Level::add_entity_B(const Box& b)
+{
+	boxes_in_level.push_back(b);
+}
+*/
 
 void Level::level_init()
 {
+	//TODO: make Vector that stores all created Entities in the level so the movement check could work better.
+	//boxes_in_level.clear();
+
 	mario.position = { 2,2 };
+		
 	boxxo.position = { 2,3 };
+	//add_entity_B(boxxo);
 }
 
 void Level::level_update()
@@ -100,19 +116,38 @@ void Level::level_update()
 
 void Level::move_player(Player& p, Vector2 input)
 {
-	if (mario.position.x + input.x == boxxo.position.x && mario.position.y + input.y == boxxo.position.y)
+	float newposx = mario.position.x + input.x;
+	float newposy = mario.position.y + input.y;
+
+	bool boxstayed = false;
+	
+	if (newposx == boxxo.position.x && newposy == boxxo.position.y)
 	{
-		move_box(boxxo, input);
+		boxstayed = move_box(boxxo, input);
 	}
 	
-	p.position.x += input.x;
-	p.position.y += input.y;
+	if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+	{
+		p.position.x += input.x;
+		p.position.y += input.y;
+	}
+	return;
 }
 
-void Level::move_box(Box& b, Vector2 input)
+bool Level::move_box(Box& b, Vector2 input)
 {
-	b.position.x += input.x;
-	b.position.y += input.y;
+	float newposx = boxxo.position.x + input.x;
+	float newposy = boxxo.position.y + input.y;
+
+
+	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0)
+	{
+		b.position.x += input.x;
+		b.position.y += input.y;
+		return false;
+	}
+	else
+		return true;
 }
 
 void Level::level_render()

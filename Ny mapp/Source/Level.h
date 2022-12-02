@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "raylib.h"
 
 class Tile_system
@@ -8,12 +9,12 @@ public:
 	const int cols = 8;
 	const int rows = 8;
 	int tiles[64] = { 1,1,1,1,1,1,1,1
-					 ,1,0,0,0,0,0,0,1
-					 ,1,0,0,0,0,0,0,1
-					 ,1,0,0,0,0,0,0,1
-					 ,1,0,0,0,0,0,0,1
-					 ,1,0,0,0,0,0,0,1
-					 ,1,0,0,0,0,0,0,1
+					 ,1,2,2,0,0,2,2,1
+					 ,1,2,0,0,0,0,2,1
+					 ,1,0,0,2,1,0,0,1
+					 ,1,0,0,1,2,0,0,1
+					 ,1,2,0,0,0,0,2,1
+					 ,1,2,2,0,0,2,2,1
 					 ,1,1,1,1,1,1,1,1 };
 
 	/*
@@ -86,17 +87,22 @@ public:
 
 class Level
 {
+	//std::list <Box> boxes_in_level = {};	
 	void move_player(Player& p, Vector2 input);
-	void move_box(Box& b, Vector2 input);
+	bool move_box(Box & b, Vector2 input);
 
 public:
 	Tile_system tiles;
 	Player mario;
 	Box boxxo;
 
+	/*
+	void clear_entitylist_B();
+	void add_entity_B(const Box& b);
+	*/
+
 	void level_init();
 	void level_update();
-	
 
 	void level_render();
 };
