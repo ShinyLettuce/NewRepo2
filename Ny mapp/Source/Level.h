@@ -32,6 +32,7 @@ public:
 
 };
 
+/*
 const enum face_directions
 {
 	UP,
@@ -39,6 +40,7 @@ const enum face_directions
 	LEFT,
 	RIGHT
 };
+*/
 
 class Entity
 {
@@ -47,7 +49,7 @@ private:
 public:
 	Vector2 position = { 1.f,1.f };
 	int size = 32;
-	int face_directions = UP;
+	//int face_directions = UP;
 	int tile_position_index = 0;
 
 	virtual void render()
@@ -69,19 +71,23 @@ class Box : public Entity
 public:
 	void render();
 	void update();
-	void move(Box& b, Vector2 input);
 };
 
 class Player : public Entity
 {
 public:
+	Vector2 input = { 0,0 };
+
 	void render();
 	void update();
-	void move(Player& p, Vector2 input);
+	
 };
 
 class Level
 {
+	void move_player(Player& p, Vector2 input);
+	void move_box(Box& b, Vector2 input);
+
 public:
 	Tile_system tiles;
 	Player mario;
@@ -89,5 +95,7 @@ public:
 
 	void level_init();
 	void level_update();
+	
+
 	void level_render();
 };

@@ -42,6 +42,7 @@ void Box::render()
 
 void Box::update()
 {
+	/*
 	switch (face_directions)
 	{
 	case RIGHT:
@@ -57,12 +58,9 @@ void Box::update()
 		position.y -= 1.f;
 		break;
 	}
+	*/
 }
 
-void Box::move(Box& b, Vector2 input)
-{
-
-}
 
 void Player::render()
 {
@@ -73,6 +71,7 @@ void Player::render()
 
 void Player::update()
 {
+	/*
 	switch (face_directions)
 	{
 	case RIGHT:
@@ -88,12 +87,28 @@ void Player::update()
 		position.y -= 1.f;
 		break;
 	}
+	*/
+	if (IsKeyPressed(KEY_RIGHT))
+	{
+		input = { 1,0 };
+	}
+
+	if (IsKeyPressed(KEY_LEFT))
+	{
+		input = { -1, 0 };
+	}
+
+	if (IsKeyPressed(KEY_DOWN))
+	{
+		input = { 0, 1 };
+	}
+
+	if (IsKeyPressed(KEY_UP))
+	{
+		input = { 0,-1 };
+	}
 }
 
-void Player::move(Player& p, Vector2 input)
-{
-
-}
 
 void Level::level_init()
 {
@@ -103,51 +118,27 @@ void Level::level_init()
 
 void Level::level_update()
 {
-	// TODO: implement new imput system (check image in discord channel)
+	mario.update();
 
-	if (IsKeyPressed(KEY_RIGHT))
-	{
-		mario.face_directions = RIGHT;
-		if (mario.position.x + 1.f == boxxo.position.x && mario.position.y == boxxo.position.y)
-		{
-			boxxo.face_directions = RIGHT;
-			boxxo.update();
-		}
-		mario.update();
-	}
+	move_player(mario, mario.input);
+	mario.input = { 0,0 };
+}
 
-	if (IsKeyPressed(KEY_LEFT))
+void Level::move_player(Player& p, Vector2 input)
+{
+	if (mario.position.x + input.x == boxxo.position.x && mario.position.y + input.y == boxxo.position.y)
 	{
-		mario.face_directions = LEFT;
-		if (mario.position.x - 1.f == boxxo.position.x && mario.position.y == boxxo.position.y)
-		{
-			boxxo.face_directions = LEFT;
-			boxxo.update();
-		}
-		mario.update();
+		move_box(boxxo, input);
 	}
+	
+	p.position.x += input.x;
+	p.position.y += input.y;
+}
 
-	if (IsKeyPressed(KEY_DOWN))
-	{
-		mario.face_directions = DOWN;
-		if (mario.position.y + 1.f == boxxo.position.y && mario.position.x == boxxo.position.x)
-		{
-			boxxo.face_directions = DOWN;
-			boxxo.update();
-		}
-		mario.update();
-	}
-
-	if (IsKeyPressed(KEY_UP))
-	{
-		mario.face_directions = UP;
-		if (mario.position.y - 1.f == boxxo.position.y && mario.position.x == boxxo.position.x)
-		{
-			boxxo.face_directions = UP;
-			boxxo.update();
-		}
-		mario.update();
-	}
+void Level::move_box(Box& b, Vector2 input)
+{
+	b.position.x += input.x;
+	b.position.y += input.y;
 }
 
 void Level::level_render()
