@@ -26,34 +26,23 @@ Color Tile_system::GetColor(int type)
 void Tile_system::render_level()
 {
 	int allyourbase = 0;
+	Color colour[3] = { GRAY, ORANGE, RAYWHITE };
 
 	for (int c = 0; c < cols; c++)
 	{
 		for (int r = 0; r < rows; r++)
 		{
 			int  type = tiles[allyourbase];
-			if (tiles[allyourbase] == 0)
+			if (tiles[allyourbase] == 3)
 			{
 				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
-			}
-			else if (tiles[allyourbase] == 3)
-			{
-				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
-				DrawTexture(flower, 16 + 64 * r, 16 + 64 * c, GRAY);
-			}
-			else if (tiles[allyourbase] == 1)
-			{
-				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), ORANGE);
-			}
-			else if (tiles[allyourbase] == 2)
-			{
-				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), RAYWHITE);
+				DrawTexture(flower, 16 + 64 * r, 16 + 64 * c, DARKGRAY);
 			}
 
-
-			
-			else
-			DrawRectangle(0 + size * r, 0 + (size * c), size, size, GetColor(type));
+			else 
+			{
+				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), colour[tiles[allyourbase]]);
+			}
 
 			allyourbase++;
 		}
