@@ -165,16 +165,30 @@ void Level::level_init()
 		}
 	}
 	//boxxo.position = { 2,3 };
+		
+	boxxo.position = { 2,3 };
+
+	background.setTiles(background_);
 	//add_entity_B(boxxo);
 }
 
 void Level::level_update()
 {
+
 	if (IsKeyPressed(KEY_DELETE))
 	{
 		level_init();
 		isWon = false;
+		startmenu = true;
+		mario.dir = 0;
 	}
+
+	if (IsKeyPressed(KEY_ENTER))
+	{
+		startmenu = false;
+	}
+
+
 	mario.update();
 
 	move_player(mario, mario.input);
@@ -227,7 +241,15 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
-	if (isWon == false)
+	if (startmenu == true)
+	{
+		//ClearBackground(BLACK);
+		background.render_level();
+		DrawText("Bee Game", 110, 64, 64, WHITE);
+		DrawText("Press Enter to start", 80, 128, 32, WHITE);
+	}
+
+	else if (isWon == false)
 	{
 		tiles.render_level();
 		mario.render();
@@ -236,9 +258,13 @@ void Level::level_render()
 			b.render();
 		}
 	}
+
 	else if (isWon == true)
 	{
 		ClearBackground(BLACK);
-		DrawText("Congratz!", 128, 64, 64, WHITE);
+		DrawTextureEx(flower, {0,0}, 0.f, 16.f, DARKGRAY);
+		DrawText("Congratz!",			110, 64, 64, WHITE);
+		DrawText("Press Delete to go",	100, 128, 32, WHITE);
+		DrawText("back to menu",		140, 160, 32, WHITE);
 	}
 }
