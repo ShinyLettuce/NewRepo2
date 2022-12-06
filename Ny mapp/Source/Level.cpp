@@ -1,6 +1,6 @@
 #include "raylib.h"
 #include "Level.h"
-#include <list>
+#include <vector>
 #include <iostream>
 
 
@@ -127,7 +127,7 @@ void Player::update()
 		dir = 0;
 	}
 }
-/*
+
 void Level::clear_entitylist_B()
 {
 	boxes_in_level.clear();
@@ -137,16 +137,34 @@ void Level::add_entity_B(const Box& b)
 {
 	boxes_in_level.push_back(b);
 }
-*/
+
 
 void Level::level_init()
 {
 	//TODO: make Vector that stores all created Entities in the level so the movement check could work better.
-	//boxes_in_level.clear();
+	boxes_in_level.clear();
 
 	mario.position = { 2,2 };
-		
-	boxxo.position = { 2,3 };
+	
+	if (level_order == 0)
+	{
+		for (int boxes = 0; boxes < 2; boxes++)
+		{
+			Box new_box;
+			new_box.position = { 2.f + boxes, 3.f + boxes };
+			add_entity_B(new_box);
+		}
+	}
+	else
+	{
+		for (int boxes = 0; boxes < 1; boxes++)
+		{
+			Box new_box;
+			new_box.position = { 2.f + boxes, 3.f + boxes };
+			add_entity_B(new_box);
+		}
+	}
+	//boxxo.position = { 2,3 };
 	//add_entity_B(boxxo);
 }
 
@@ -170,23 +188,26 @@ void Level::move_player(Player& p, Vector2 input)
 
 	bool boxstayed = false;
 	
-	if (newposx == boxxo.position.x && newposy == boxxo.position.y)
+	for (Box b : boxes_in_level)
 	{
-		boxstayed = move_box(boxxo, input);
-	}
-	
-	if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
-	{
-		p.position.x += input.x;
-		p.position.y += input.y;
-	}
+		if (newposx == b.position.x && newposy == b.position.y)
+		{
+			boxstayed = move_box(b, input);
+		}
+
+		if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+		{
+			p.position.x += input.x;
+			p.position.y += input.y;
+		}
+	}	
 	return;
 }
 
 bool Level::move_box(Box& b, Vector2 input)
 {
-	float newposx = boxxo.position.x + input.x;
-	float newposy = boxxo.position.y + input.y;
+	float newposx = b.position.x + input.x;
+	float newposy = b.position.y + input.y;
 
 
 	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0 || tiles.tiles[((int)newposx + (8 * (int)newposy))] == 3)
@@ -210,7 +231,10 @@ void Level::level_render()
 	{
 		tiles.render_level();
 		mario.render();
-		boxxo.render();
+		for (Box b : boxes_in_level)
+		{
+			b.render();
+		}
 	}
 	else if (isWon == true)
 	{

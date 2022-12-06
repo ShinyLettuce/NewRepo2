@@ -1,5 +1,5 @@
 #pragma once
-#include <list>
+#include <vector>
 #include "raylib.h"
 
 class Tile_system
@@ -94,7 +94,7 @@ public:
 
 class Level
 {
-	//std::list <Box> boxes_in_level = {};	
+	std::vector <Box> boxes_in_level = {};	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
 	bool isWon = false;
@@ -102,13 +102,14 @@ class Level
 public:
 	Tile_system tiles;
 	Player mario;
-	Box boxxo;
+	//Box boxxo;
+
+	int level_order = 0;
 
 
-	/*
 	void clear_entitylist_B();
 	void add_entity_B(const Box& b);
-	*/
+	
 
 	void level_init();
 	void level_update();
