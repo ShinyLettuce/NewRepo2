@@ -17,20 +17,19 @@ public:
 					 ,1,2,2,0,0,2,2,1
 					 ,1,1,1,1,1,1,1,1 };
 
-	/*
-					  1,0,1,0,1,0,1,0
-					 ,0,1,0,1,0,1,0,1
-					 ,1,0,1,0,1,0,1,0
-					 ,0,1,0,1,0,1,0,1
-					 ,1,0,1,0,1,0,1,0
-					 ,0,1,0,1,0,1,0,1
-					 ,1,0,1,0,1,0,1,0
-					 ,0,1,0,1,0,1,0,1
-	*/
 	Color GetColor(int type);
 	void render_level();
 	Texture2D honeycomb = LoadTexture("beehive-tiles.png");
 	Texture2D flower = LoadTexture("flower.png");
+
+	void setTiles(int tiles_[])
+	{
+			for (int i = 0; i < 64; i++)
+			{
+				tiles[i] = tiles_[i];
+			}
+
+	}
 
 };
 
@@ -94,13 +93,27 @@ public:
 
 class Level
 {
+	Texture2D flower = LoadTexture("flower.png");
 	//std::list <Box> boxes_in_level = {};	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
+	bool startmenu = true;
 	bool isWon = false;
+	int currentlvl = 0;
+	int background_[64] = {		1,1,1,1,1,1,1,1
+								,1,0,0,0,0,0,0,1
+								,1,0,0,0,0,0,0,1
+								,1,2,0,2,0,2,0,1
+								,1,0,2,0,2,0,2,1
+								,1,2,0,2,0,2,0,1
+								,1,0,2,0,2,0,2,1
+								,1,1,1,1,1,1,1,1 };
 
 public:
 	Tile_system tiles;
+	Tile_system background;
+
+
 	Player mario;
 	Box boxxo;
 
