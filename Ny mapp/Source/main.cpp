@@ -15,7 +15,7 @@ int main(void)
     //Image Bee = LoadImage("beePlayer1.png");
     //SetWindowIcon(Bee);
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(screenWidth, screenHeight, "Bee Game");
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
