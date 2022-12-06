@@ -146,12 +146,13 @@ void Level::level_init()
 
 	mario.position = { 2,2 };
 	
-	if (level_order == 0)
+	if (level_order == 1)
 	{
 		for (int boxes = 0; boxes < 2; boxes++)
 		{
+			float times_boxes = 1.f * boxes;
 			Box new_box;
-			new_box.position = { 2.f + boxes, 3.f + boxes };
+			new_box.position = { (2 + times_boxes), (3 + times_boxes) };
 			add_entity_B(new_box);
 		}
 	}
@@ -160,7 +161,7 @@ void Level::level_init()
 		for (int boxes = 0; boxes < 1; boxes++)
 		{
 			Box new_box;
-			new_box.position = { 2.f + boxes, 3.f + boxes };
+			new_box.position = { 2 , 3};
 			add_entity_B(new_box);
 		}
 	}
@@ -200,19 +201,23 @@ void Level::move_player(Player& p, Vector2 input)
 
 	bool boxstayed = false;
 	
-	for (Box b : boxes_in_level)
+	for (Box& b : boxes_in_level)
 	{
 		if (newposx == b.position.x && newposy == b.position.y)
 		{
 			boxstayed = move_box(b, input);
 		}
-
-		if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+		if (boxstayed)
 		{
-			p.position.x += input.x;
-			p.position.y += input.y;
+			break;
 		}
 	}	
+	
+	if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+	{
+		p.position.x += input.x;
+		p.position.y += input.y;
+	}
 	return;
 }
 
