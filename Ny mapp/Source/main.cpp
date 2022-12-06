@@ -21,7 +21,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
     
     Level level;
-    level.level_order = 0;
+    level.level_order = 1;
     level.level_init();
     
 
