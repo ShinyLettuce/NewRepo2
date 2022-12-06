@@ -165,8 +165,6 @@ void Level::level_init()
 		}
 	}
 	//boxxo.position = { 2,3 };
-		
-	boxxo.position = { 2,3 };
 
 	background.setTiles(background_);
 	//add_entity_B(boxxo);
