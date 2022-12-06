@@ -227,7 +227,7 @@ bool Level::move_box(Box& b, Vector2 input)
 	float newposy = b.position.y + input.y;
 
 
-	for (Box b : boxes_in_level)
+	for (const Box b : boxes_in_level)
 	{
 		if (newposx == b.position.x && newposy == b.position.y)
 		{
