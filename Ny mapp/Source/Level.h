@@ -35,15 +35,14 @@ public:
 
 };
 
-/*
-const enum face_directions
-{
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-};
-*/
+//const enum face_directions
+//{
+//	UP,
+//	DOWN,
+//	LEFT,
+//	RIGHT
+//};
+
 
 class Entity
 {
@@ -83,7 +82,11 @@ class Player : public Entity
 {
 public:
 	Vector2 input = { 0,0 };
+	int dir = 0;
 	Texture2D Bee = LoadTexture("beePlayer1.png");
+
+
+
 
 	void render();
 	void update();

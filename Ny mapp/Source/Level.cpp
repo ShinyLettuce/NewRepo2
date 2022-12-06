@@ -66,10 +66,40 @@ void Box::update()
 
 void Player::render()
 {
-	float pixel_x = (position.x * 64) + 16;
-	float pixel_y = (position.y * 64) + 16;
-	//DrawRectangle((int)pixel_x, (int)pixel_y, size, size, RED);
-	DrawTexture(Bee, (int)pixel_x, (int)pixel_y, WHITE);
+
+
+	Vector2 pos = { (position.x * 64) + 16, (position.y * 64) + 16 };
+
+
+	switch (dir)
+	{
+	case 0:
+	{
+		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
+		break;
+	}
+	case 1:
+	{
+		pos.x += 32;
+		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
+		break;
+	}
+	case 2:
+	{
+		pos.y += 32; pos.x += 32;
+		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
+		break;
+	}
+	case 3:
+	{
+		pos.y += 32;
+		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
+		break;
+	}
+	}
+
+
+	//DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
 }
 
 void Player::update()
@@ -78,21 +108,25 @@ void Player::update()
 	if (IsKeyPressed(KEY_RIGHT))
 	{
 		input = { 1,0 };
+		dir = 1;
 	}
 
 	if (IsKeyPressed(KEY_LEFT))
 	{
 		input = { -1, 0 };
+		dir = 3;
 	}
 
 	if (IsKeyPressed(KEY_DOWN))
 	{
 		input = { 0, 1 };
+		dir = 2;
 	}
 
 	if (IsKeyPressed(KEY_UP))
 	{
 		input = { 0,-1 };
+		dir = 0;
 	}
 }
 /*
