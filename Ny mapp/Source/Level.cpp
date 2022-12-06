@@ -36,7 +36,16 @@ void Tile_system::render_level()
 				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
 				DrawTexture(flower, 16 + 64 * r, 16 + 64 * c, GRAY);
 			}
-			
+			else if (tiles[allyourbase] == 1)
+			{
+				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), ORANGE);
+			}
+			else if (tiles[allyourbase] == 2)
+			{
+				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), RAYWHITE);
+			}
+
+
 			
 			else
 			DrawRectangle(0 + size * r, 0 + (size * c), size, size, GetColor(type));
