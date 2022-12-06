@@ -27,7 +27,6 @@ public:
 					 ,1,0,1,0,1,0,1,0
 					 ,0,1,0,1,0,1,0,1
 	*/
-
 	Color GetColor(int type);
 	void render_level();
 	Texture2D honeycomb = LoadTexture("beehive-tiles.png");
@@ -98,6 +97,7 @@ class Level
 	//std::list <Box> boxes_in_level = {};	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
+	bool isWon = false;
 
 public:
 	Tile_system tiles;

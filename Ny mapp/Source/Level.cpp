@@ -54,7 +54,7 @@ void Box::render()
 {
 	float pixel_x = (position.x * 64) + 16;
 	float pixel_y = (position.y * 64) + 16;
-	//DrawRectangle((int)pixel_x, (int)pixel_y, size, size, BROWN);
+
 	DrawTexture(flower, (int)pixel_x, (int)pixel_y, WHITE);
 }
 
@@ -73,24 +73,24 @@ void Player::render()
 
 	switch (dir)
 	{
-	case 0:
+	case 0:  //Up
 	{
 		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
 		break;
 	}
-	case 1:
+	case 1:  //Right
 	{
 		pos.x += 32;
 		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
 		break;
 	}
-	case 2:
+	case 2:  //Down
 	{
 		pos.y += 32; pos.x += 32;
 		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
 		break;
 	}
-	case 3:
+	case 3:  //Left
 	{
 		pos.y += 32;
 		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
@@ -98,8 +98,6 @@ void Player::render()
 	}
 	}
 
-
-	//DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
 }
 
 void Player::update()
@@ -157,6 +155,7 @@ void Level::level_update()
 	if (IsKeyPressed(KEY_DELETE))
 	{
 		level_init();
+		isWon = false;
 	}
 	mario.update();
 
@@ -196,6 +195,7 @@ bool Level::move_box(Box& b, Vector2 input)
 		b.position.y += input.y;
 		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
 		{
+			isWon = true;
 			std::cout << "Hurray!" << std::endl;
 		}
 		return false;
@@ -206,7 +206,15 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
-	tiles.render_level();
-	mario.render();
-	boxxo.render();
+	if (isWon == false)
+	{
+		tiles.render_level();
+		mario.render();
+		boxxo.render();
+	}
+	else if (isWon == true)
+	{
+		ClearBackground(BLACK);
+		DrawText("Congratz!", 128, 64, 64, WHITE);
+	}
 }
