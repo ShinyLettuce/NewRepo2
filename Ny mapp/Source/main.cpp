@@ -21,8 +21,8 @@ int main(void)
     //--------------------------------------------------------------------------------------
     
     Level level;
-    level.level_order = 1;
-    level.level_init();
+    level.game_init();
+    
     
 
     // Main game loop

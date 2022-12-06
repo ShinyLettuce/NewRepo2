@@ -138,12 +138,17 @@ void Level::add_entity_B(const Box& b)
 	boxes_in_level.push_back(b);
 }
 
+void Level::game_init()
+{
+	level_order = 1;
+	level_init();
+}
 
 void Level::level_init()
 {
-	//TODO: make Vector that stores all created Entities in the level so the movement check could work better.
 	boxes_in_level.clear();
 
+	mario.dir = 0;
 	mario.position = { 2,2 };
 	
 	if (level_order == 1)
@@ -171,15 +176,20 @@ void Level::level_init()
 	//add_entity_B(boxxo);
 }
 
+
 void Level::level_update()
 {
+
+	if (IsKeyPressed(KEY_HOME))
+	{
+		isWon = false;
+		startmenu = true;
+		game_init();
+	}
 
 	if (IsKeyPressed(KEY_DELETE))
 	{
 		level_init();
-		isWon = false;
-		startmenu = true;
-		mario.dir = 0;
 	}
 
 	if (IsKeyPressed(KEY_ENTER))
@@ -274,7 +284,7 @@ void Level::level_render()
 		ClearBackground(BLACK);
 		DrawTextureEx(flower, {0,0}, 0.f, 16.f, DARKGRAY);
 		DrawText("Congratz!",			110, 64, 64, WHITE);
-		DrawText("Press Delete to go",	100, 128, 32, WHITE);
+		DrawText("Press Home to go",	100, 128, 32, WHITE);
 		DrawText("back to menu",		140, 160, 32, WHITE);
 	}
 }

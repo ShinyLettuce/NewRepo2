@@ -125,6 +125,8 @@ public:
 	void add_entity_B(const Box& b);
 	
 
+	void game_init();
+
 	void level_init();
 	void level_update();
 

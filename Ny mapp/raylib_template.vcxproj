@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\MainMenu.cpp" />
     <ClCompile Include="Tilesetidea.cpp" />
   </ItemGroup>
   <ItemGroup>
