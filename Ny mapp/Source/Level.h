@@ -31,6 +31,7 @@ public:
 	Color GetColor(int type);
 	void render_level();
 	Texture2D honeycomb = LoadTexture("beehive-tiles.png");
+	Texture2D flower = LoadTexture("flower.png");
 
 };
 
@@ -53,6 +54,8 @@ public:
 	int size = 32;
 	//int face_directions = UP;
 	int tile_position_index = 0;
+
+
 
 	virtual void render()
 	{

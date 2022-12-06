@@ -30,7 +30,15 @@ void Tile_system::render_level()
 			if (tiles[allyourbase] == 0)
 			{
 				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
-			} else
+			}
+			else if (tiles[allyourbase] == 3)
+			{
+				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
+				DrawTexture(flower, 16 + 64 * r, 16 + 64 * c, GRAY);
+			}
+			
+			
+			else
 			DrawRectangle(0 + size * r, 0 + (size * c), size, size, GetColor(type));
 
 			allyourbase++;
