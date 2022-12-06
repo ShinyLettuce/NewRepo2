@@ -1,11 +1,16 @@
 #include "raylib.h"
 #include "Level.h"
 #include <list>
+#include <iostream>
 
 
 
 Color Tile_system::GetColor(int type)
 {
+	if (type == 3)
+	{
+		return { BLUE };
+	}
 	if (type == 2)
 	{
 		return { GRAY };
@@ -162,10 +167,14 @@ bool Level::move_box(Box& b, Vector2 input)
 	float newposy = boxxo.position.y + input.y;
 
 
-	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0)
+	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0 || tiles.tiles[((int)newposx + (8 * (int)newposy))] == 3)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
+		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
+		{
+			std::cout << "Hurray!" << std::endl;
+		}
 		return false;
 	}
 	else
