@@ -71,7 +71,7 @@ void Player::render()
 	Vector2 pos = { (position.x * 64) + 16, (position.y * 64) + 16 };
 
 
-	switch (dir)
+	/*switch (dir)
 	{
 	case 0:  //Up
 	{
@@ -97,6 +97,33 @@ void Player::render()
 		break;
 	}
 	}
+	*/
+	switch (face_directions)
+	{
+	case UP:
+	{
+		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
+		break;
+	}
+	case RIGHT:
+	{
+		pos.x += 32;
+		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
+		break;
+	}
+	case DOWN:
+	{
+		pos.y += 32; pos.x += 32;
+		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
+		break;
+	}
+	case LEFT:
+	{
+		pos.y += 32;
+		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
+		break;
+	}
+	}
 
 }
 
@@ -106,25 +133,29 @@ void Player::update()
 	if (IsKeyPressed(KEY_RIGHT))
 	{
 		input = { 1,0 };
-		dir = 1;
+		//dir = 1;
+		face_directions = RIGHT;
 	}
 
 	if (IsKeyPressed(KEY_LEFT))
 	{
 		input = { -1, 0 };
-		dir = 3;
+		//dir = 3;
+		face_directions = LEFT;
 	}
 
 	if (IsKeyPressed(KEY_DOWN))
 	{
 		input = { 0, 1 };
-		dir = 2;
+		//dir = 2;
+		face_directions = DOWN;
 	}
 
 	if (IsKeyPressed(KEY_UP))
 	{
 		input = { 0,-1 };
-		dir = 0;
+		//dir = 0;
+		face_directions = UP;
 	}
 }
 
@@ -148,39 +179,54 @@ void Level::level_init()
 {
 	boxes_in_level.clear();
 
-	mario.dir = 0;
-	mario.position = { 2,2 };
+	//mario.dir = 0;
+	mario.face_directions = UP;
 	
 	if (level_order == 1)
 	{
-		for (int boxes = 0; boxes < 2; boxes++)
+		mario.position = { 1,1 };
+		for (int boxes = 0; boxes < 6; boxes++)
 		{
-			float times_boxes = 1.f * boxes;
 			Box new_box;
-			new_box.position = { (2 + times_boxes), (3 + times_boxes) };
+			if (boxes == 0)
+			{
+				new_box.position = { 2 , 2 };
+			}
+			else if (boxes == 1)
+			{
+				new_box.position = { 3 , 2 };
+			}
+			else if (boxes == 2)
+			{
+				new_box.position = { 5 , 3 };
+			}
+			else if (boxes == 3)
+			{
+				new_box.position = { 5 , 2 };
+			}
+			else
+			{
+				break;
+			}
 			add_entity_B(new_box);
 		}
 	}
 	else
 	{
-		for (int boxes = 0; boxes < 1; boxes++)
-		{
-			Box new_box;
-			new_box.position = { 2 , 3};
-			add_entity_B(new_box);
-		}
+		mario.position = { 2,2 };
+		Box new_box;
+		new_box.position = { 2 , 3 };
+		add_entity_B(new_box);
 	}
-	//boxxo.position = { 2,3 };
 
 	background.setTiles(background_);
-	//add_entity_B(boxxo);
 }
 
 
 void Level::level_update()
 {
 
-	if (IsKeyPressed(KEY_HOME))
+	if (IsKeyPressed(KEY_HOME)) //ENI Comment: Home in order to return to MainMenu and Delete to reset current level?
 	{
 		isWon = false;
 		startmenu = true;
@@ -192,7 +238,7 @@ void Level::level_update()
 		level_init();
 	}
 
-	if (IsKeyPressed(KEY_ENTER))
+	if (IsKeyPressed(KEY_ENTER)) //ENI Comment: Start Menu in MainMenu?
 	{
 		startmenu = false;
 	}
@@ -261,7 +307,7 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
-	if (startmenu == true)
+	if (startmenu) //ENI Comment: Start Menu in MainManu?
 	{
 		//ClearBackground(BLACK);
 		background.render_level();
@@ -269,7 +315,7 @@ void Level::level_render()
 		DrawText("Press Enter to start", 80, 128, 32, WHITE);
 	}
 
-	else if (isWon == false)
+	else if (!isWon) 
 	{
 		tiles.render_level();
 		mario.render();
@@ -279,7 +325,7 @@ void Level::level_render()
 		}
 	}
 
-	else if (isWon == true)
+	else if (isWon) //ENI Comment: End Screen in MainManu?
 	{
 		ClearBackground(BLACK);
 		DrawTextureEx(flower, {0,0}, 0.f, 16.f, DARKGRAY);

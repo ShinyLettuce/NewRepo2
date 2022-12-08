@@ -33,14 +33,13 @@ public:
 
 };
 
-//const enum face_directions
-//{
-//	UP,
-//	DOWN,
-//	LEFT,
-//	RIGHT
-//};
-
+const enum face_directions
+{
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+};
 
 class Entity
 {
@@ -49,8 +48,8 @@ private:
 public:
 	Vector2 position = { 1.f,1.f };
 	int size = 32;
-	//int face_directions = UP;
-	int tile_position_index = 0;
+	int face_directions = UP;
+	//int tile_position_index = 0;
 
 
 
@@ -80,7 +79,7 @@ class Player : public Entity
 {
 public:
 	Vector2 input = { 0,0 };
-	int dir = 0;
+	//int dir = 0;
 	Texture2D Bee = LoadTexture("beePlayer1.png");
 
 
@@ -95,11 +94,11 @@ class Level
 {
 	std::vector <Box> boxes_in_level = {};	
 	Texture2D flower = LoadTexture("flower.png");
-	//std::list <Box> boxes_in_level = {};	
+	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
-	bool startmenu = true;
-	bool isWon = false;
+	bool startmenu = true; //ENI Comment: Start Screen in MainManu?
+	bool isWon = false; //ENI Comment: End Screen in MainManu?
 	int currentlvl = 0;
 	int background_[64] = {		1,1,1,1,1,1,1,1
 								,1,0,0,0,0,0,0,1
@@ -116,9 +115,8 @@ public:
 
 
 	Player mario;
-	//Box boxxo;
 
-	int level_order = 0;
+	int level_order = 0; //ENI Comment: Choosing a level in MainMenu that would control the selected tile layout?
 
 
 	void clear_entitylist_B();
