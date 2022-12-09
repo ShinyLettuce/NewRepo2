@@ -18,9 +18,9 @@ public:
 	
 	void init_images()
 	{
-		honeycomb = LoadTexture("beehive-tiles.png");
+		honeycomb = LoadTexture("beehive-tiles5.png");
 		flower = LoadTexture("flower.png");
-		bee = LoadTexture("beePlayer1.png");
+		bee = LoadTexture("beePlayer4.png");
 	}
 
 	Texture2D get_image(enum request item)
