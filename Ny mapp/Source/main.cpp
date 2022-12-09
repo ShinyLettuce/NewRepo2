@@ -1,6 +1,73 @@
 #include "raylib.h"
 #include "Level.h"
-//#include "beePlayer1.png"
+#include "Images.cpp"
+
+#include <stack>
+
+enum class State
+{
+    MAIN_MENU,
+    GAME,
+    WIN_SCREEN
+};
+
+std::stack <State> states;
+
+void update(Level* level)
+{
+    if (IsKeyPressed(KEY_HOME))
+    {
+        level->game_init();
+        states.pop();
+    }
+
+    if (level->isWon)
+    {
+        states.push(State::WIN_SCREEN);
+    }
+
+    level->level_update();
+}
+
+void render(Level* level)
+{
+    level->level_render();
+}
+
+void game_frame(Level* level)
+{
+    update(level);
+    render(level);
+}
+
+void main_menu_frame(Level* level)
+{
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        level->level_init();
+        states.push(State::GAME);
+    }
+    
+    ClearBackground(BLACK);
+    DrawText("Bee Game", 110, 64, 64, WHITE);
+    DrawText("Press Enter to start", 80, 128, 32, WHITE);
+    
+}
+
+void win_screen_frame(Level* level)
+{
+    ClearBackground(BLACK);
+    DrawText("Congratz!", 110, 64, 64, WHITE);
+    DrawText("Press Home to go", 100, 128, 32, WHITE);
+    DrawText("back to menu", 140, 160, 32, WHITE);
+
+    if (IsKeyPressed(KEY_HOME))
+    {
+        level->game_init();
+        states.pop();
+        states.pop();
+    }
+}
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -16,13 +83,20 @@ int main(void)
     //SetWindowIcon(Bee);
 
     InitWindow(screenWidth, screenHeight, "Bee Game");
+    
+    BeginDrawing();
+    Images initial_images;
+    initial_images.init_images();
+    EndDrawing();
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
     Level level;
+    level.images = initial_images;
     level.game_init();
     
+    states.push(State::MAIN_MENU);
     
 
     // Main game loop
@@ -37,11 +111,27 @@ int main(void)
         BeginDrawing();
         
         //Texture2D LoadTexture("beePlayer1.png");
-        
-        
 
-        level.level_update();
-        level.level_render();
+        State current_state = states.top();
+
+        switch (current_state)
+        {
+            
+            case State::MAIN_MENU:
+                main_menu_frame(&level);
+            break;
+
+            case State::GAME:
+                game_frame(&level);
+            break;
+
+            case State::WIN_SCREEN:
+                win_screen_frame(&level);
+            break;
+        }
+
+        //level.level_update();
+        //level.level_render();
         
         EndDrawing();
         //----------------------------------------------------------------------------------

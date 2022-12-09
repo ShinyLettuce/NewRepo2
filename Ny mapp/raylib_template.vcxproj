@@ -159,9 +159,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Entity.cpp" />
+    <ClCompile Include="Source\Images.cpp" />
     <ClCompile Include="Source\Level.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\MainMenu.cpp" />
     <ClCompile Include="Tilesetidea.cpp" />
   </ItemGroup>
   <ItemGroup>
