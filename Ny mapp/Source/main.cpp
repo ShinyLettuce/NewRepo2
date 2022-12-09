@@ -32,7 +32,17 @@ void game_frame(Level* level)
     render(level);
 }
 
-
+void main_menu_frame()
+{
+    
+    DrawText("Bee Game", 110, 64, 64, WHITE);
+    DrawText("Press Enter to start", 80, 128, 32, WHITE);
+    
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        states.push(State::GAME);
+    }
+}
 
 
 //------------------------------------------------------------------------------------

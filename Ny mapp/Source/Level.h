@@ -100,7 +100,7 @@ class Level
 	bool startmenu = true; //ENI Comment: Start Screen in MainManu?
 	bool isWon = false; //ENI Comment: End Screen in MainManu?
 	int currentlvl = 0;
-	int background_[64] = {		1,1,1,1,1,1,1,1
+	int background_[64] = {		 1,1,1,1,1,1,1,1
 								,1,0,0,0,0,0,0,1
 								,1,0,0,0,0,0,0,1
 								,1,2,0,2,0,2,0,1
@@ -110,6 +110,7 @@ class Level
 								,1,1,1,1,1,1,1,1 };
 
 public:
+
 	Tile_system tiles;
 	Tile_system background;
 

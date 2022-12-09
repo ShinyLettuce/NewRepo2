@@ -225,23 +225,26 @@ void Level::level_init()
 
 void Level::level_update()
 {
-
+	/*
 	if (IsKeyPressed(KEY_HOME)) //ENI Comment: Home in order to return to MainMenu and Delete to reset current level?
 	{
 		isWon = false;
 		startmenu = true;
 		game_init();
 	}
+	*/
 
 	if (IsKeyPressed(KEY_DELETE))
 	{
 		level_init();
 	}
 
+	/*
 	if (IsKeyPressed(KEY_ENTER)) //ENI Comment: Start Menu in MainMenu?
 	{
 		startmenu = false;
 	}
+	*/
 
 
 	mario.update();
@@ -307,6 +310,8 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
+	
+	/*
 	if (startmenu) //ENI Comment: Start Menu in MainManu?
 	{
 		//ClearBackground(BLACK);
@@ -314,8 +319,9 @@ void Level::level_render()
 		DrawText("Bee Game", 110, 64, 64, WHITE);
 		DrawText("Press Enter to start", 80, 128, 32, WHITE);
 	}
+	*/
 
-	else if (!isWon) 
+	if (!isWon) 
 	{
 		tiles.render_level();
 		mario.render();
