@@ -7,7 +7,8 @@
 enum class State
 {
     MAIN_MENU,
-    GAME
+    GAME,
+    WIN_SCREEN
 };
 
 std::stack <State> states;
@@ -16,7 +17,13 @@ void update(Level* level)
 {
     if (IsKeyPressed(KEY_HOME))
     {
+        level->game_init();
         states.pop();
+    }
+
+    if (level->isWon)
+    {
+        states.push(State::WIN_SCREEN);
     }
 
     level->level_update();
@@ -33,10 +40,11 @@ void game_frame(Level* level)
     render(level);
 }
 
-void main_menu_frame()
+void main_menu_frame(Level* level)
 {
     if (IsKeyPressed(KEY_ENTER))
     {
+        level->level_init();
         states.push(State::GAME);
     }
     
@@ -44,6 +52,21 @@ void main_menu_frame()
     DrawText("Bee Game", 110, 64, 64, WHITE);
     DrawText("Press Enter to start", 80, 128, 32, WHITE);
     
+}
+
+void win_screen_frame(Level* level)
+{
+    ClearBackground(BLACK);
+    DrawText("Congratz!", 110, 64, 64, WHITE);
+    DrawText("Press Home to go", 100, 128, 32, WHITE);
+    DrawText("back to menu", 140, 160, 32, WHITE);
+
+    if (IsKeyPressed(KEY_HOME))
+    {
+        level->game_init();
+        states.pop();
+        states.pop();
+    }
 }
 
 //------------------------------------------------------------------------------------
@@ -93,12 +116,17 @@ int main(void)
 
         switch (current_state)
         {
-
+            
             case State::MAIN_MENU:
-                main_menu_frame();
+                main_menu_frame(&level);
             break;
+
             case State::GAME:
                 game_frame(&level);
+            break;
+
+            case State::WIN_SCREEN:
+                win_screen_frame(&level);
             break;
         }
 

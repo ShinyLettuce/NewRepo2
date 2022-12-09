@@ -171,6 +171,7 @@ void Level::add_entity_B(const Box& b)
 
 void Level::game_init()
 {
+	isWon = false;
 	background.tile_images = images;
 	background.honeycomb = images.get_image(HONEYCOMB);
 	background.flower = images.get_image(FLOWER);
@@ -319,6 +320,12 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
+	tiles.render_level();
+	mario.render();
+	for (Box b : boxes_in_level)
+	{
+		b.render();
+	}
 	
 	/*
 	if (startmenu) //ENI Comment: Start Menu in MainManu?
@@ -330,16 +337,7 @@ void Level::level_render()
 	}
 	*/
 
-	if (!isWon) 
-	{
-		tiles.render_level();
-		mario.render();
-		for (Box b : boxes_in_level)
-		{
-			b.render();
-		}
-	}
-
+	/*
 	else if (isWon) //ENI Comment: End Screen in MainManu?
 	{
 		ClearBackground(BLACK);
@@ -348,4 +346,5 @@ void Level::level_render()
 		DrawText("Press Home to go",	100, 128, 32, WHITE);
 		DrawText("back to menu",		140, 160, 32, WHITE);
 	}
+	*/
 }

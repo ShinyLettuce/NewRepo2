@@ -105,8 +105,7 @@ class Level
 	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
-	bool startmenu = true; //ENI Comment: Start Screen in MainManu?
-	bool isWon = false; //ENI Comment: End Screen in MainManu?
+	//bool startmenu = true; //ENI Comment: Start Screen in MainManu?
 	int currentlvl = 0;
 	int background_[64] = {		 1,1,1,1,1,1,1,1
 								,1,0,0,0,0,0,0,1
@@ -118,6 +117,7 @@ class Level
 								,1,1,1,1,1,1,1,1 };
 
 public:
+	bool isWon = false; //ENI Comment: End Screen in MainManu?
 	Images images;
 
 	Tile_system tiles;
