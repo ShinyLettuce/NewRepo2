@@ -11,6 +11,26 @@ enum class State
 
 std::stack <State> states;
 
+void update(Level* level)
+{
+    if (IsKeyPressed(KEY_HOME))
+    {
+        states.pop();
+    }
+
+    level->level_update();
+}
+
+void render(Level* level)
+{
+    level->level_render();
+}
+
+void game_frame(Level* level)
+{
+    update(level);
+    render(level);
+}
 
 
 
