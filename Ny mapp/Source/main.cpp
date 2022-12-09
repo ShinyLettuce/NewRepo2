@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "Level.h"
+#include "Images.cpp"
 
 #include <stack>
 
@@ -44,10 +45,6 @@ void main_menu_frame()
     DrawText("Press Enter to start", 80, 128, 32, WHITE);
     
 }
-
-#include "Images.cpp"
-
-//#include "beePlayer1.png"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
