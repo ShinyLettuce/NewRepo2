@@ -3,45 +3,12 @@
 #include "raylib.h"
 #include "Images.cpp"
 #include "Entity.cpp"
-
-class Tile_system
-{
-public:
-	Images tile_images;
-	static const int size = 64;
-	const int cols = 8;
-	const int rows = 8;
-	int tiles[64] = { 1,1,1,1,1,1,1,1
-					 ,1,2,2,0,0,2,2,1
-					 ,1,2,0,0,0,0,2,1
-					 ,1,0,0,2,1,0,0,1
-					 ,1,0,0,1,2,0,3,1
-					 ,1,2,0,0,0,0,2,1
-					 ,1,2,2,0,0,2,2,1
-					 ,1,1,1,1,1,1,1,1 };
-
-	Color GetColor(int type);
-	void render_level();
-	Texture2D honeycomb;
-	Texture2D flower;
-
-	void setTiles(int tiles_[])
-	{
-			for (int i = 0; i < 64; i++)
-			{
-				tiles[i] = tiles_[i];
-			}
-
-	}
-
-};
-
+#include "Tile_system.cpp"
 
 
 class Level
 {
-	std::vector <Box> boxes_in_level = {};	
-	//Texture2D flower = LoadTexture("flower.png");
+	std::vector <Box> boxes_in_level = {};
 	Texture2D flower = images.get_image(FLOWER);
 	
 	void move_player(Player& p, Vector2 input);
