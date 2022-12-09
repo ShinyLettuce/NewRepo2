@@ -2,6 +2,7 @@
 #include <vector>
 #include "raylib.h"
 #include "Images.cpp"
+#include "Entity.cpp"
 
 class Tile_system
 {
@@ -21,8 +22,6 @@ public:
 
 	Color GetColor(int type);
 	void render_level();
-	//Texture2D honeycomb = LoadTexture("beehive-tiles.png");
-	//Texture2D flower = LoadTexture("flower.png");
 	Texture2D honeycomb;
 	Texture2D flower;
 
@@ -37,65 +36,7 @@ public:
 
 };
 
-const enum face_directions
-{
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT
-};
 
-class Entity
-{
-private:
-
-public:
-	Images entity_images;
-	Vector2 position = { 1.f,1.f };
-	int size = 32;
-	int face_directions = UP;
-	//int tile_position_index = 0;
-
-
-
-	virtual void render()
-	{
-	}
-
-	virtual void update()
-	{
-	}
-
-	virtual void move()
-	{
-	}
-
-};
-
-class Box : public Entity
-{
-public:
-	void render();
-	void update();
-	//Texture2D flower = LoadTexture("flower.png");
-	Texture2D flower;
-};
-
-class Player : public Entity
-{
-public:
-	Vector2 input = { 0,0 };
-	//int dir = 0;
-	//Texture2D Bee = LoadTexture("beePlayer1.png");
-	Texture2D Bee;
-
-
-
-
-	void render();
-	void update();
-	
-};
 
 class Level
 {
@@ -122,7 +63,6 @@ public:
 
 	Tile_system tiles;
 	Tile_system background;
-
 
 	Player mario;
 

@@ -2,7 +2,7 @@
 #include "Level.h"
 #include <vector>
 #include <iostream>
-
+#include "Entity.cpp"
 
 
 Color Tile_system::GetColor(int type)
@@ -49,116 +49,6 @@ void Tile_system::render_level()
 	}
 }
 
-
-void Box::render()
-{
-	float pixel_x = (position.x * 64) + 16;
-	float pixel_y = (position.y * 64) + 16;
-
-	DrawTexture(flower, (int)pixel_x, (int)pixel_y, WHITE);
-}
-
-void Box::update()
-{
-	
-}
-
-
-void Player::render()
-{
-
-
-	Vector2 pos = { (position.x * 64) + 16, (position.y * 64) + 16 };
-
-
-	/*switch (dir)
-	{
-	case 0:  //Up
-	{
-		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
-		break;
-	}
-	case 1:  //Right
-	{
-		pos.x += 32;
-		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
-		break;
-	}
-	case 2:  //Down
-	{
-		pos.y += 32; pos.x += 32;
-		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
-		break;
-	}
-	case 3:  //Left
-	{
-		pos.y += 32;
-		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
-		break;
-	}
-	}
-	*/
-	switch (face_directions)
-	{
-	case UP:
-	{
-		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
-		break;
-	}
-	case RIGHT:
-	{
-		pos.x += 32;
-		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
-		break;
-	}
-	case DOWN:
-	{
-		pos.y += 32; pos.x += 32;
-		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
-		break;
-	}
-	case LEFT:
-	{
-		pos.y += 32;
-		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
-		break;
-	}
-	}
-
-}
-
-void Player::update()
-{
-	
-	if (IsKeyPressed(KEY_RIGHT))
-	{
-		input = { 1,0 };
-		//dir = 1;
-		face_directions = RIGHT;
-	}
-
-	if (IsKeyPressed(KEY_LEFT))
-	{
-		input = { -1, 0 };
-		//dir = 3;
-		face_directions = LEFT;
-	}
-
-	if (IsKeyPressed(KEY_DOWN))
-	{
-		input = { 0, 1 };
-		//dir = 2;
-		face_directions = DOWN;
-	}
-
-	if (IsKeyPressed(KEY_UP))
-	{
-		input = { 0,-1 };
-		//dir = 0;
-		face_directions = UP;
-	}
-}
-
 void Level::clear_entitylist_B()
 {
 	boxes_in_level.clear();
@@ -185,7 +75,6 @@ void Level::level_init()
 	tiles.flower = images.get_image(FLOWER);
 	boxes_in_level.clear();
 
-	//mario.dir = 0;
 	mario.Bee = images.get_image(BEE);
 	mario.face_directions = UP;
 	
