@@ -81,7 +81,18 @@ int main(void)
         
         //Texture2D LoadTexture("beePlayer1.png");
         
-        
+        State current_state = states.top();
+
+        switch (current_state)
+        {
+
+            case State::MAIN_MENU:
+                main_menu_frame();
+            break;
+            case State::GAME:
+                game_frame(&level);
+            break;
+        }
 
         level.level_update();
         level.level_render();
