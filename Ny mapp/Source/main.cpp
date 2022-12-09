@@ -45,6 +45,9 @@ void main_menu_frame()
     
 }
 
+#include "Images.cpp"
+
+//#include "beePlayer1.png"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -60,11 +63,17 @@ int main(void)
     //SetWindowIcon(Bee);
 
     InitWindow(screenWidth, screenHeight, "Bee Game");
+    
+    BeginDrawing();
+    Images initial_images;
+    initial_images.init_images();
+    EndDrawing();
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
     Level level;
+    level.images = initial_images;
     level.game_init();
     
     states.push(State::MAIN_MENU);

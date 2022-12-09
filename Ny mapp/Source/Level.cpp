@@ -171,15 +171,22 @@ void Level::add_entity_B(const Box& b)
 
 void Level::game_init()
 {
+	background.tile_images = images;
+	background.honeycomb = images.get_image(HONEYCOMB);
+	background.flower = images.get_image(FLOWER);
 	level_order = 1;
 	level_init();
 }
 
 void Level::level_init()
 {
+	tiles.tile_images = images;
+	tiles.honeycomb = images.get_image(HONEYCOMB);
+	tiles.flower = images.get_image(FLOWER);
 	boxes_in_level.clear();
 
 	//mario.dir = 0;
+	mario.Bee = images.get_image(BEE);
 	mario.face_directions = UP;
 	
 	if (level_order == 1)
@@ -208,6 +215,7 @@ void Level::level_init()
 			{
 				break;
 			}
+			new_box.flower = images.get_image(FLOWER);
 			add_entity_B(new_box);
 		}
 	}
@@ -216,6 +224,7 @@ void Level::level_init()
 		mario.position = { 2,2 };
 		Box new_box;
 		new_box.position = { 2 , 3 };
+		new_box.flower = images.get_image(FLOWER);
 		add_entity_B(new_box);
 	}
 
@@ -334,7 +343,7 @@ void Level::level_render()
 	else if (isWon) //ENI Comment: End Screen in MainManu?
 	{
 		ClearBackground(BLACK);
-		DrawTextureEx(flower, {0,0}, 0.f, 16.f, DARKGRAY);
+		DrawTextureEx(tiles.flower, {0,0}, 0.f, 16.f, DARKGRAY);
 		DrawText("Congratz!",			110, 64, 64, WHITE);
 		DrawText("Press Home to go",	100, 128, 32, WHITE);
 		DrawText("back to menu",		140, 160, 32, WHITE);
