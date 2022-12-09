@@ -1,6 +1,19 @@
 #include "raylib.h"
 #include "Level.h"
-//#include "beePlayer1.png"
+
+#include <stack>
+
+enum class State
+{
+    MAIN_MENU,
+    GAME
+};
+
+std::stack <State> states;
+
+
+
+
 
 //------------------------------------------------------------------------------------
 // Program main entry point
