@@ -34,14 +34,15 @@ void game_frame(Level* level)
 
 void main_menu_frame()
 {
-    
-    DrawText("Bee Game", 110, 64, 64, WHITE);
-    DrawText("Press Enter to start", 80, 128, 32, WHITE);
-    
     if (IsKeyPressed(KEY_ENTER))
     {
         states.push(State::GAME);
     }
+    
+    ClearBackground(BLACK);
+    DrawText("Bee Game", 110, 64, 64, WHITE);
+    DrawText("Press Enter to start", 80, 128, 32, WHITE);
+    
 }
 
 
@@ -66,6 +67,7 @@ int main(void)
     Level level;
     level.game_init();
     
+    states.push(State::MAIN_MENU);
     
 
     // Main game loop
@@ -80,7 +82,7 @@ int main(void)
         BeginDrawing();
         
         //Texture2D LoadTexture("beePlayer1.png");
-        
+
         State current_state = states.top();
 
         switch (current_state)
@@ -94,8 +96,8 @@ int main(void)
             break;
         }
 
-        level.level_update();
-        level.level_render();
+        //level.level_update();
+        //level.level_render();
         
         EndDrawing();
         //----------------------------------------------------------------------------------
