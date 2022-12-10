@@ -18,9 +18,6 @@ void Level::add_entity_B(const Box& b)
 void Level::game_init()
 {
 	isWon = false;
-	background.tile_images = images;
-	background.honeycomb = images.get_image(HONEYCOMB);
-	background.flower = images.get_image(FLOWER);
 	level_order = 1;
 	level_init();
 }
@@ -73,8 +70,6 @@ void Level::level_init()
 		new_box.flower = images.get_image(FLOWER);
 		add_entity_B(new_box);
 	}
-
-	background.setTiles(background_);
 }
 
 
