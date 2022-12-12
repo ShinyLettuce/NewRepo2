@@ -85,15 +85,15 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Bee Game");
     
     BeginDrawing();
-    Images initial_images;
-    initial_images.init_images();
+    Media initial_media;
+    initial_media.init_media();
     EndDrawing();
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
     Level level;
-    level.images = initial_images;
+    level.images = initial_media;
     level.game_init();
     
     states.push(State::MAIN_MENU);

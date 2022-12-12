@@ -5,7 +5,7 @@
 class Tile_system
 {
 public:
-	Images tile_images;
+	Media tile_images;
 	Texture2D honeycomb;
 	Texture2D flower;
 

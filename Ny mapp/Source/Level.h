@@ -17,7 +17,7 @@ class Level
 
 public:
 	bool isWon = false;
-	Images images;
+	Media images;
 
 	Tile_system tiles;
 	Player mario;

@@ -134,6 +134,8 @@ bool Level::move_box(Box& b, Vector2 input)
 		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
 		{
 			isWon = true;
+			//Sound hurraa = images.get_sound(HURRAY);
+			//PlaySound(hurraa);
 			std::cout << "Hurray!" << std::endl;
 		}
 		return false;
