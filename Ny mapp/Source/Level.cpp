@@ -25,6 +25,8 @@ void Level::game_init()
 
 void Level::level_init()
 {
+	pushBox = images.get_sound(PUSH);
+	failBox = images.get_sound(FAIL);
 	boxes_on_switch = 0;
 	tiles.tile_images = images;
 	tiles.honeycomb = images.get_image(HONEYCOMB);
@@ -141,11 +143,11 @@ void Level::level_init()
 			Box new_box;
 			if (boxes == 0)
 			{
-				new_box.position = { 4 , 3 };
+				new_box.position = { 2 , 2 };
 			}
 			else if (boxes == 1)
 			{
-				new_box.position = { 4 , 4 };
+				new_box.position = { 3 , 2 };
 			}
 			else if (boxes == 2)
 			{
@@ -216,6 +218,55 @@ void Level::move_player(Player& p, Vector2 input)
 	return;
 }
 
+void Level::boxes_winning(Box& b, int level_order)
+{
+	int win_condition = 0;
+	if (level_order == 1 || level_order == 2)
+	{
+		win_condition = 2;
+	}
+	if (level_order == 3)
+	{
+		win_condition = 4;
+	}
+	if (level_order == 4 || level_order == 5)
+	{
+		win_condition = 3;
+	}
+
+	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
+	{
+		if (!b.onaswitch)
+		{
+			boxes_on_switch += 1;
+			b.onaswitch = true;
+		}
+		if (boxes_on_switch == win_condition)
+		{
+			isWon = true;
+			if (IsAudioDeviceReady)
+			{
+				Sound hurraa = images.get_sound(HURRAY);
+				PlaySoundMulti(hurraa);
+			}
+			else
+			{
+				std::cout << "Audio device is not ready. :(" << std::endl;
+			}
+			std::cout << "Hurray!" << std::endl;
+
+		}
+	}
+	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
+	{
+		if (b.onaswitch)
+		{
+			boxes_on_switch -= 1;
+			b.onaswitch = false;
+		}
+	}
+}
+
 bool Level::move_box(Box& b, Vector2 input)
 {
 	float newposx = b.position.x + input.x;
@@ -233,40 +284,12 @@ bool Level::move_box(Box& b, Vector2 input)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
-		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
-		{
-			if (!b.onaswitch)
-			{
-				boxes_on_switch += 1;
-				b.onaswitch = true;
-			}
-			if (boxes_on_switch == boxes_in_level.size())
-			{
-				isWon = true;
-				if (IsAudioDeviceReady)
-				{
-					Sound hurraa = images.get_sound(HURRAY);
-					PlaySoundMulti(hurraa);
-				}
-				else
-				{
-					std::cout << "Audio device is not ready. :(" << std::endl;
-				}
-				std::cout << "Hurray!" << std::endl;
-				
-			}
-		}
-		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
-		{
-			if (b.onaswitch)
-			{
-				boxes_on_switch -= 1;
-				b.onaswitch = false;
-			}
-		}
+		PlaySoundMulti(pushBox);
+		boxes_winning(b, level_order);
 		return false;
 	}
 	else
+		PlaySoundMulti(failBox);
 		return true;
 }
 
