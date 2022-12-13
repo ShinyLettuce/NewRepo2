@@ -9,7 +9,8 @@ enum request
 	HURRAY,
 	BEEBG,
 	BEEMOVE,
-	PUSH
+	PUSH,
+	FAIL
 };
 
 class Media
@@ -27,6 +28,7 @@ class Media
 	Sound beeBgSound;
 	Sound beeMove;
 	Sound pushBox;
+	Sound failBox;
 
 public:
 	
@@ -47,6 +49,7 @@ public:
 		beeBgSound = LoadSound("beeBackgroundSound.mp3");
 		beeMove = LoadSound("bzzz.mp3");
 		pushBox = LoadSound("push.mp3");
+		failBox = LoadSound("Hups.ogg");
 	}
 
 	Texture2D get_image(enum request item)
@@ -91,6 +94,8 @@ public:
 			return beeMove;
 		case PUSH:
 			return pushBox;
+		case FAIL:
+			return failBox;
 		}
 	}
 };

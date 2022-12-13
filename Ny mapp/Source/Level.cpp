@@ -26,6 +26,7 @@ void Level::game_init()
 void Level::level_init()
 {
 	pushBox = images.get_sound(PUSH);
+	failBox = images.get_sound(FAIL);
 	boxes_on_switch = 0;
 	tiles.tile_images = images;
 	tiles.honeycomb = images.get_image(HONEYCOMB);
@@ -190,6 +191,7 @@ bool Level::move_box(Box& b, Vector2 input)
 		return false;
 	}
 	else
+		PlaySoundMulti(failBox);
 		return true;
 }
 
