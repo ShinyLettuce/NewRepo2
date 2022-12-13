@@ -12,6 +12,7 @@ class Level
 	Texture2D flower = images.get_image(FLOWER);
 	
 	void move_player(Player& p, Vector2 input);
+	void boxes_winning(Box& b, int level_order);
 	bool move_box(Box & b, Vector2 input);
 	int currentlvl = 0;
 
