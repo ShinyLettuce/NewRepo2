@@ -20,7 +20,6 @@ void Level::game_init()
 	Sound beebg = images.get_sound(BEEBG);
 	PlaySoundMulti(beebg);
 	isWon = false;
-	level_order = 1;
 	level_init();
 }
 
@@ -175,7 +174,7 @@ bool Level::move_box(Box& b, Vector2 input)
 
 void Level::level_render()
 {
-	tiles.render_level();
+	tiles.render_level(level_order);
 	mario.render();
 	for (Box b : boxes_in_level)
 	{
