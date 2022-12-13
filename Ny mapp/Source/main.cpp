@@ -11,15 +11,6 @@ enum class State
     WIN_SCREEN
 };
 
-enum Levels
-{
-    LEVEL1,
-    LEVEL2,
-    LEVEL3,
-    LEVEL4,
-    LEVEL5
-};
-
 std::stack <State> states;
 
 void update(Level* level)
@@ -51,13 +42,6 @@ void game_frame(Level* level)
 
 void main_menu_frame(Level* level)
 {
-    /*
-    if (IsKeyPressed(KEY_ENTER))
-    {
-        level->level_init();
-        states.push(State::GAME);
-    }
-    */
     
     if (IsKeyPressed(KEY_ONE))
     {
