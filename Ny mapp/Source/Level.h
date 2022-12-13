@@ -11,6 +11,7 @@ class Level
 	std::vector <Box> boxes_in_level = {};
 	Texture2D flower = images.get_image(FLOWER);
 	Sound pushBox;
+	Sound failBox;
 	
 	void move_player(Player& p, Vector2 input);
 	void boxes_winning(Box& b, int level_order);
