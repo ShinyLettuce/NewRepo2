@@ -43,31 +43,33 @@ void game_frame(Level* level)
 void main_menu_frame(Level* level)
 {
     
-    if (IsKeyPressed(KEY_ONE))
+    
+
+    if (level->mario.position.x == 1 && level->mario.position.y == 3)
     {
         level->level_order = 1;
         level->level_init();
         states.push(State::GAME);
     }
-    if (IsKeyPressed(KEY_TWO))
+    if (level->mario.position.x == 2 && level->mario.position.y == 3)
     {
         level->level_order = 2;
         level->level_init();
         states.push(State::GAME);
     }
-    if (IsKeyPressed(KEY_THREE))
+    if (level->mario.position.x == 3 && level->mario.position.y == 3)
     {
         level->level_order = 3;
         level->level_init();
         states.push(State::GAME);
     }
-    if (IsKeyPressed(KEY_FOUR))
+    if (level->mario.position.x == 4 && level->mario.position.y == 3)
     {
         level->level_order = 4;
         level->level_init();
         states.push(State::GAME);
     }
-    if (IsKeyPressed(KEY_FIVE))
+    if (level->mario.position.x == 5 && level->mario.position.y == 3)
     {
         level->level_order = 5;
         level->level_init();
@@ -75,9 +77,15 @@ void main_menu_frame(Level* level)
     }
 
     level->level_render();
+    level->level_update();
     DrawText("Bee Game", 110, 64, 64, WHITE);
-    DrawText("Press 1-5 to start", 80, 128, 32, WHITE);
-
+    DrawText("Move to 1-5", 160, 128, 32, WHITE);
+    DrawText("to start a level", 128, 160, 32, WHITE);
+    DrawText("1", 92, 208, 32, BLACK);
+    DrawText("2", 156, 208, 32, WHITE);
+    DrawText("3", 220, 208, 32, BLACK);
+    DrawText("4", 284, 208, 32, WHITE);
+    DrawText("5", 348, 208, 32, BLACK);
 }
 
 void win_screen_frame(Level* level)

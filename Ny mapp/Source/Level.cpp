@@ -18,6 +18,7 @@ void Level::add_entity_B(const Box& b)
 void Level::game_init()
 {
 	level_order = 0;
+	mario.position = { 3,4 };
 	Sound beebg = images.get_sound(BEEBG);
 	PlaySoundMulti(beebg);
 	isWon = false;
@@ -119,12 +120,12 @@ void Level::level_init()
 		mario.position = { 1,1 };
 
 		Box new_box_1;
-		new_box_1.position = { 2,1 };
+		new_box_1.position = { 3,2 };
 		new_box_1.flower = images.get_image(FLOWER);
 		add_entity_B(new_box_1);
 
 		Box new_box_2;
-		new_box_2.position = { 3,2 };
+		new_box_2.position = { 3,3 };
 		new_box_2.flower = images.get_image(FLOWER);
 		add_entity_B(new_box_2);
 
