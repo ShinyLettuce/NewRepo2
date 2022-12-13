@@ -16,6 +16,7 @@ class Level
 	int currentlvl = 0;
 
 public:
+	int boxes_on_switch = 0;
 	bool isWon = false;
 	Media images;
 

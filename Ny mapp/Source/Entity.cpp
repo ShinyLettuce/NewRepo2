@@ -33,6 +33,7 @@ class Box : public Entity
 {
 public:
 	Texture2D flower;
+	bool onaswitch = false;
 	
 	void render()
 	{
