@@ -146,10 +146,17 @@ bool Level::move_box(Box& b, Vector2 input)
 			if (boxes_on_switch == 2)
 			{
 				isWon = true;
-				Sound hurraa = images.get_sound(HURRAY);
-				PlaySoundMulti(hurraa);
+				if (IsAudioDeviceReady)
+				{
+					Sound hurraa = images.get_sound(HURRAY);
+					PlaySoundMulti(hurraa);
+				}
+				else
+				{
+					std::cout << "Audio device is not ready. :(" << std::endl;
+				}
 				std::cout << "Hurray!" << std::endl;
-				StopSoundMulti();
+				
 			}
 		}
 		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
