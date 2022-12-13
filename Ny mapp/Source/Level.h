@@ -13,6 +13,7 @@ class Level
 	Sound pushBox;
 	
 	void move_player(Player& p, Vector2 input);
+	void boxes_winning(Box& b, int level_order);
 	bool move_box(Box & b, Vector2 input);
 	int currentlvl = 0;
 
