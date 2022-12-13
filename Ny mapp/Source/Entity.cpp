@@ -49,6 +49,7 @@ class Player : public Entity
 public:
 	Vector2 input = { 0,0 };
 	Texture2D Bee;
+	Sound beeMove;
 
 	void render()
 	{
@@ -87,24 +88,28 @@ public:
 		{
 			input = { 1,0 };
 			face_directions = RIGHT;
+			PlaySoundMulti(beeMove);
 		}
 
 		if (IsKeyPressed(KEY_LEFT))
 		{
 			input = { -1, 0 };
 			face_directions = LEFT;
+			PlaySoundMulti(beeMove);
 		}
 
 		if (IsKeyPressed(KEY_DOWN))
 		{
 			input = { 0, 1 };
 			face_directions = DOWN;
+			PlaySoundMulti(beeMove);
 		}
 
 		if (IsKeyPressed(KEY_UP))
 		{
 			input = { 0,-1 };
 			face_directions = UP;
+			PlaySoundMulti(beeMove);
 		}
 	}
 
