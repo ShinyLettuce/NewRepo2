@@ -34,7 +34,7 @@ public:
 	{
 		//Images
 		honeycomb = LoadTexture("beehive-tiles5.png");
-		flower = LoadTexture("flower.png");
+		flower = LoadTexture("flower2.png");
 		bee = LoadTexture("beePlayer4.png");
 
 		//Music
