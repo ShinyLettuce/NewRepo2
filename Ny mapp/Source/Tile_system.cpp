@@ -104,6 +104,10 @@ public:
 		{
 			for (int r = 0; r < rows; r++)
 			{
+				if (level_order == 0)
+				{
+					setTiles(mainMenu_);
+				}
 				
 				if (level_order == 1)
 				{

@@ -17,6 +17,7 @@ void Level::add_entity_B(const Box& b)
 
 void Level::game_init()
 {
+	level_order = 0;
 	Sound beebg = images.get_sound(BEEBG);
 	PlaySoundMulti(beebg);
 	isWon = false;
@@ -37,7 +38,7 @@ void Level::level_init()
 	mario.beeMove = images.get_sound(BEEMOVE);
 
 	mario.face_directions = UP;
-	
+
 	if (level_order == 1)
 	{
 		mario.position = { 1,3 };
