@@ -11,6 +11,15 @@ enum class State
     WIN_SCREEN
 };
 
+enum Levels
+{
+    LEVEL1,
+    LEVEL2,
+    LEVEL3,
+    LEVEL4,
+    LEVEL5
+};
+
 std::stack <State> states;
 
 void update(Level* level)
@@ -42,16 +51,49 @@ void game_frame(Level* level)
 
 void main_menu_frame(Level* level)
 {
+    /*
     if (IsKeyPressed(KEY_ENTER))
     {
         level->level_init();
         states.push(State::GAME);
     }
+    */
     
+    if (IsKeyPressed(KEY_ONE))
+    {
+        level->level_order = 1;
+        level->level_init();
+        states.push(State::GAME);
+    }
+    if (IsKeyPressed(KEY_TWO))
+    {
+        level->level_order = 2;
+        level->level_init();
+        states.push(State::GAME);
+    }
+    if (IsKeyPressed(KEY_THREE))
+    {
+        level->level_order = 3;
+        level->level_init();
+        states.push(State::GAME);
+    }
+    if (IsKeyPressed(KEY_FOUR))
+    {
+        level->level_order = 4;
+        level->level_init();
+        states.push(State::GAME);
+    }
+    if (IsKeyPressed(KEY_FIVE))
+    {
+        level->level_order = 5;
+        level->level_init();
+        states.push(State::GAME);
+    }
+
     ClearBackground(BLACK);
     DrawText("Bee Game", 110, 64, 64, WHITE);
-    DrawText("Press Enter to start", 80, 128, 32, WHITE);
-    
+    DrawText("Press 1-5 to start", 80, 128, 32, WHITE);
+
 }
 
 void win_screen_frame(Level* level)
