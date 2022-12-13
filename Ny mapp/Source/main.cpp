@@ -121,10 +121,12 @@ int main(void)
     const int screenWidth = 512;
     const int screenHeight = 512;
 
-    //Image Bee = LoadImage("beePlayer1.png");
-    //SetWindowIcon(Bee);
+    Image beeIcon;
+
+    beeIcon = LoadImage("BeeGameIcon.png");
 
     InitWindow(screenWidth, screenHeight, "Bee Game");
+    SetWindowIcon(beeIcon);
     
     BeginDrawing();
     Media initial_media;
