@@ -25,6 +25,7 @@ void Level::game_init()
 
 void Level::level_init()
 {
+	pushBox = images.get_sound(PUSH);
 	boxes_on_switch = 0;
 	tiles.tile_images = images;
 	tiles.honeycomb = images.get_image(HONEYCOMB);
@@ -135,6 +136,8 @@ bool Level::move_box(Box& b, Vector2 input)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
+		PlaySoundMulti(pushBox);
+
 		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
 		{
 			if (!b.onaswitch)

@@ -10,6 +10,7 @@ class Level
 {
 	std::vector <Box> boxes_in_level = {};
 	Texture2D flower = images.get_image(FLOWER);
+	Sound pushBox;
 	
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
