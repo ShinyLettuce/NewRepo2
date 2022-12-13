@@ -134,46 +134,6 @@ void Level::level_init()
 
 	}
 
-	/*
-	if (level_order == 1)
-	{
-		mario.position = { 1,3 };
-		for (int boxes = 0; boxes < 6; boxes++)
-		{
-			Box new_box;
-			if (boxes == 0)
-			{
-				new_box.position = { 2 , 2 };
-			}
-			else if (boxes == 1)
-			{
-				new_box.position = { 3 , 2 };
-			}
-			else if (boxes == 2)
-			{
-				new_box.position = { 5 , 3 };
-			}
-			else if (boxes == 3)
-			{
-				new_box.position = { 5 , 2 };
-			}
-			else
-			{
-				break;
-			}
-			new_box.flower = images.get_image(FLOWER);
-			add_entity_B(new_box);
-		}
-	}
-	else
-	{
-		mario.position = { 2,2 };
-		Box new_box;
-		new_box.position = { 2 , 3 };
-		new_box.flower = images.get_image(FLOWER);
-		add_entity_B(new_box);
-	}
-	*/
 }
 
 
