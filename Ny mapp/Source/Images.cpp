@@ -36,7 +36,7 @@ public:
 		*/
 		//Sound Effects:
 		InitAudioDevice();
-		hurray = LoadSound("hurray.wav");
+		hurray = LoadSound("Hurray.ogg");
 	}
 
 	Texture2D get_image(enum request item)
