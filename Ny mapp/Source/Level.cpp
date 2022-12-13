@@ -143,8 +143,9 @@ bool Level::move_box(Box& b, Vector2 input)
 			{
 				isWon = true;
 				Sound hurraa = images.get_sound(HURRAY);
-				PlaySound(hurraa);
+				PlaySoundMulti(hurraa);
 				std::cout << "Hurray!" << std::endl;
+				StopSoundMulti();
 			}
 		}
 		if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
