@@ -38,13 +38,14 @@ void game_frame(Level* level)
 {
     update(level);
     render(level);
+
+    DrawText("Press Del to retry", 32, 464, 32, BLACK);
 }
 
 void main_menu_frame(Level* level)
 {
     
     
-
     if (level->mario.position.x == 1 && level->mario.position.y == 3)
     {
         level->level_order = 1;
