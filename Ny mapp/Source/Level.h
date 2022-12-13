@@ -14,22 +14,12 @@ class Level
 	void move_player(Player& p, Vector2 input);
 	bool move_box(Box & b, Vector2 input);
 	int currentlvl = 0;
-	int background_[64] = {		 1,1,1,1,1,1,1,1
-								,1,0,0,0,0,0,0,1
-								,1,0,0,0,0,0,0,1
-								,1,2,0,2,0,2,0,1
-								,1,0,2,0,2,0,2,1
-								,1,2,0,2,0,2,0,1
-								,1,0,2,0,2,0,2,1
-								,1,1,1,1,1,1,1,1 };
 
 public:
 	bool isWon = false;
-	Images images;
+	Media images;
 
 	Tile_system tiles;
-	Tile_system background;
-
 	Player mario;
 
 	int level_order = 0; //ENI Comment: Choosing a level in MainMenu that would control the selected tile layout?

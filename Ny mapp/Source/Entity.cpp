@@ -15,7 +15,7 @@ class Entity
 private:
 
 public:
-	Images entity_images;
+	Media entity_images;
 	Vector2 position = { 1.f,1.f };
 	int size = 32;
 	int face_directions = UP;

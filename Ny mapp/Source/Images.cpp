@@ -5,22 +5,37 @@ enum request
 {
 	BEE,
 	FLOWER,
-	HONEYCOMB
+	HONEYCOMB,
+	HURRAY
 };
 
-class Images
+class Media
 {
+	//Images:
 	Texture2D honeycomb;
 	Texture2D flower;
 	Texture2D bee;
 
+	//Music:
+	//AudioStream background_music;
+
+	//Sound Effects:
+	Sound hurray;
 public:
 	
-	void init_images()
+	void init_media()
 	{
+		//Images
 		honeycomb = LoadTexture("beehive-tiles5.png");
 		flower = LoadTexture("flower.png");
 		bee = LoadTexture("beePlayer4.png");
+
+		//Music
+		/*
+		background_music = LoadMusicStream("");
+		*/
+		//Sound Effects:
+		hurray = LoadSound("Hurray.ogg");
 	}
 
 	Texture2D get_image(enum request item)
@@ -39,6 +54,26 @@ public:
 		{
 			return honeycomb;
 		}
+		}
+	}
+
+	/*
+	Music get_music(enum request item)
+	{
+		switch (item)
+		{
+		case BACKGROUND:
+			return background_music;
+		}
+	}
+	*/
+
+	Sound get_sound(enum request item)
+	{
+		switch (item)
+		{
+		case HURRAY:
+			return hurray;
 		}
 	}
 };
