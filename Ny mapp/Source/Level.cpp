@@ -185,6 +185,7 @@ bool Level::move_box(Box& b, Vector2 input)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
+		PlaySoundMulti(pushBox);
 		boxes_winning(b, level_order);
 		return false;
 	}
