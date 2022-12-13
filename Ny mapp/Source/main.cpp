@@ -90,7 +90,6 @@ void main_menu_frame(Level* level)
         states.push(State::GAME);
     }
 
-    ClearBackground(BLACK);
     level->level_render();
     DrawText("Bee Game", 110, 64, 64, WHITE);
     DrawText("Press 1-5 to start", 80, 128, 32, WHITE);
