@@ -25,7 +25,7 @@ public:
 	Tile_system tiles;
 	Player mario;
 
-	int level_order = 0; //ENI Comment: Choosing a level in MainMenu that would control the selected tile layout?
+	int level_order = 0; 
 
 
 	void clear_entitylist_B();
