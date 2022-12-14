@@ -2,6 +2,6 @@
 
 Group Members:
 
-Enik Maksim Nikiforov
+Erik Nikiforov
 Jacob Engelhardt
 Nom Köhler
