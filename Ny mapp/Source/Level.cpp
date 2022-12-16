@@ -1,6 +1,7 @@
 #include "Level.h"
 #include <iostream>
 
+// created to reduce redundant code in level_init
 void Level::create_flower(Vector2 position)
 {
 	Flower new_flower;
@@ -39,6 +40,8 @@ void Level::move_player(Player& p, Vector2 input)
 void Level::flowers_and_winning(Flower& b, int level_order)
 {
 	int win_condition = 0;
+
+	// vvv Implemented this way since the flowers check for buttons and certain levels uses more flowers than there are buttons
 	if (level_order == 1 || level_order == 2)
 	{
 		win_condition = 2;
