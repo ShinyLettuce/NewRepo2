@@ -1,7 +1,7 @@
 #pragma once
 #include "Tile_system.h"
 
-void Tile_system::render_level(int level_order)
+void Tile_system::render_level()
 {
 	//In order for us to create the proper tile system, we need to be able to check that created_tile is correct in the selected column (c) and row (r).
 	

@@ -86,7 +86,7 @@ public:
 						1,2,2,0,3,2,2,1,
 						1,1,1,1,1,1,1,1 };
 
-	void render_level(int level_order);
+	void render_level();
 
 	void setTiles(int level);
 };

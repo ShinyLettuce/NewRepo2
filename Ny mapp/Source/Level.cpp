@@ -278,7 +278,7 @@ bool Level::move_flower(Flower& b, Vector2 input)
 
 void Level::level_render()
 {
-	tiles.render_level(level_order);
+	tiles.render_level();
 	playerBee.render();
 	for (Flower b : flowers_in_level)
 	{
