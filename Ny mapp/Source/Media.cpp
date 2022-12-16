@@ -33,6 +33,8 @@ Texture2D Media::get_image(enum request item)
 	{
 		return honeycomb;
 	}
+	default: //We didn't have time to create error spirtes for wrongly requested images, thus bee is used as a default.
+		return bee;
 	}
 }
 
@@ -49,6 +51,8 @@ Sound Media::get_sound(enum request item)
 	case PUSH:
 		return pushFlower;
 	case FAIL:
+		return failFlower;
+	default: //We didn't have time to create error sound for wrongly requested sounds, thus hups is used as a default.
 		return failFlower;
 	}
 }
