@@ -167,104 +167,46 @@ void Level::level_init()
 	{
 		playerBee.position = { 6,5 };
 
-		Flower new_flower_1;
-		new_flower_1.position = { 4,3 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
-
-		Flower new_flower_2;
-		new_flower_2.position = { 3,4 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
+		create_flower({ 4,3 });
+		create_flower({ 3,4 });
 
 	}
 	else if (level_order == 3)
 	{
 		playerBee.position = { 5,2 };
 
-		Flower new_flower_1;
-		new_flower_1.position = { 3,3 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
-
-		Flower new_flower_2;
-		new_flower_2.position = { 2,4 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
-
-		Flower new_flower_3;
-		new_flower_3.position = { 3,5 };
-		new_flower_3.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_3);
+		create_flower({ 3,3 });
+		create_flower({ 2,4 });
+		create_flower({ 3,5 });
 
 	}
 	else if (level_order == 4)
 	{
 		playerBee.position = { 3,3 };
 
-		Flower new_flower_1;
-		new_flower_1.position = { 2,2 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
-
-		Flower new_flower_2;
-		new_flower_2.position = { 5,2 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
-
-		Flower new_flower_3;
-		new_flower_3.position = { 2,5 };
-		new_flower_3.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_3);
-
-		Flower new_flower_4;
-		new_flower_4.position = { 5,5 };
-		new_flower_4.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_4);
+		create_flower({ 2,2 });
+		create_flower({ 5,2 });
+		create_flower({ 2,5 });
+		create_flower({ 5,5 });
 
 	}
 	else if(level_order == 5)
 	{
 		playerBee.position = { 1,1 };
 
-		Flower new_flower_1;
-		new_flower_1.position = { 3,2 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
-
-		Flower new_flower_2;
-		new_flower_2.position = { 3,3 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
-
-		Flower new_flower_3;
-		new_flower_3.position = { 2,3 };
-		new_flower_3.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_3);
+		create_flower({ 3,2 });
+		create_flower({ 3,3 });
+		create_flower({ 2,3 });
 
 	}
 	else if (level_order == 6)
 	{
 		playerBee.position = { 6,3 };
-		Flower new_flower_1;
-		new_flower_1.position = { 2,2 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
 
-		Flower new_flower_2;
-		new_flower_2.position = { 2,3 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
-
-		Flower new_flower_3;
-		new_flower_3.position = { 1,4 };
-		new_flower_3.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_3);
-
-		Flower new_flower_4;
-		new_flower_4.position = { 5,2 };
-		new_flower_4.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_4);
+		create_flower({ 2,2 });
+		create_flower({ 2,3 });
+		create_flower({ 1,4 });
+		create_flower({ 5,2 });
 	}
 
 }
