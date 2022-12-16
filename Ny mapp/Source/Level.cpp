@@ -66,7 +66,7 @@ void Level::flowers_and_winning(Flower& b, int level_order)
 		{
 			isWon = true;
 			PlaySoundMulti(hurraa);
-			std::cout << "Hurray!" << std::endl;
+			std::cout << "Hurray!" << std::endl; //Left as an easter egg and reminder how much fun we had when we were able to create a victory screen.
 
 		}
 	}
