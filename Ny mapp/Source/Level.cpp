@@ -68,6 +68,26 @@ void Level::level_init()
 	}
 	else if (level_order == 3)
 	{
+		mario.position = { 5,2 };
+
+		Box new_box_1;
+		new_box_1.position = { 3,3 };
+		new_box_1.flower = images.get_image(FLOWER);
+		add_entity_B(new_box_1);
+
+		Box new_box_2;
+		new_box_2.position = { 2,4 };
+		new_box_2.flower = images.get_image(FLOWER);
+		add_entity_B(new_box_2);
+
+		Box new_box_3;
+		new_box_3.position = { 3,5 };
+		new_box_3.flower = images.get_image(FLOWER);
+		add_entity_B(new_box_3);
+
+	}
+	else if (level_order == 4)
+	{
 		mario.position = { 3,3 };
 
 		Box new_box_1;
@@ -89,26 +109,6 @@ void Level::level_init()
 		new_box_4.position = { 5,5 };
 		new_box_4.flower = images.get_image(FLOWER);
 		add_entity_B(new_box_4);
-
-	}
-	else if (level_order == 4)
-	{
-		mario.position = { 5,2 };
-
-		Box new_box_1;
-		new_box_1.position = { 3,3 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
-
-		Box new_box_2;
-		new_box_2.position = { 2,4 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
-
-		Box new_box_3;
-		new_box_3.position = { 3,5 };
-		new_box_3.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_3);
 
 	}
 	else if(level_order == 5)
@@ -206,11 +206,11 @@ void Level::boxes_winning(Box& b, int level_order)
 	{
 		win_condition = 2;
 	}
-	if (level_order == 3)
+	if (level_order == 4)
 	{
 		win_condition = 4;
 	}
-	if (level_order == 4 || level_order == 5 || level_order == 6)
+	if (level_order == 3 || level_order == 5 || level_order == 6)
 	{
 		win_condition = 3;
 	}
