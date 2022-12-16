@@ -6,43 +6,14 @@ void Tile_system::render_level(int level_order)
 	//In order for us to create the proper tile system, we need to be able to check that created_tile is correct in the selected column (c) and row (r).
 	
 	int created_tile = 0;
+	int type;
 	Color colour[3] = { GRAY, ORANGE, RAYWHITE };
 
 	for (int c = 0; c < cols; c++)
 	{
 		for (int r = 0; r < rows; r++)
 		{
-			if (level_order == 0)
-			{
-				setTiles(mainMenu_);
-			}
-
-			if (level_order == 1)
-			{
-				setTiles(level1_);
-			}
-			if (level_order == 2)
-			{
-				setTiles(level2_);
-			}
-			if (level_order == 3)
-			{
-				setTiles(level3_);
-			}
-			if (level_order == 4)
-			{
-				setTiles(level4_);
-			}
-			if (level_order == 5)
-			{
-				setTiles(level5_);
-			}
-			if (level_order == 6)
-			{
-				setTiles(level6_);
-			}
-
-			int type = tiles[created_tile];
+			type = tiles[created_tile];
 
 			if (type == 3)
 			{
@@ -59,10 +30,14 @@ void Tile_system::render_level(int level_order)
 	}
 }
 
-void Tile_system::setTiles(int tiles_[])
+void Tile_system::setTiles(int activelevel)
 {
+	int* levels[7] = { mainMenu_, level1_, level2_, level3_, level4_, level5_, level6_ };
+
+	int* newTiles = levels[activelevel];
+
 	for (int i = 0; i < 64; i++)
 	{
-		tiles[i] = tiles_[i];
+		tiles[i] = newTiles[i];
 	}
 }
