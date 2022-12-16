@@ -1,5 +1,4 @@
 #pragma once
-#include "raylib.h"
 #include "Media.h"
 
 void Media::init_media()
@@ -9,10 +8,6 @@ void Media::init_media()
 	flower = LoadTexture("flower2.png");
 	bee = LoadTexture("beePlayer4.png");
 
-	//Music
-	/*
-	background_music = LoadMusicStream("");
-	*/
 	//Sound Effects:
 	InitAudioDevice();
 	hurray = LoadSound("hurray.wav");

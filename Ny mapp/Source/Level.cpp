@@ -1,9 +1,5 @@
-#include "raylib.h"
 #include "Level.h"
-#include <vector>
 #include <iostream>
-#include "Entity.cpp"
-#include "Tile_system.cpp"
 
 void Level::clear_entitylist_B()
 {

@@ -1,116 +1,72 @@
 #pragma once
-#include "raylib.h"
-#include "Media.h"
+#include "Entity.h"
 
-const enum face_directions
+void Box::render()
 {
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT
-};
+	float pixel_x = (position.x * 64) + 16;
+	float pixel_y = (position.y * 64) + 16;
 
-class Entity
+	DrawTexture(flower, (int)pixel_x, (int)pixel_y, WHITE);
+}
+
+void Player::render()
 {
-private:
-
-public:
-	Media entity_images;
-	Vector2 position = { 1.f,1.f };
-	int size = 32;
-	int face_directions = UP;
-
-	virtual void render()
+	Vector2 pos = { (position.x * 64) + 16, (position.y * 64) + 16 };
+	switch (face_directions)
 	{
-	}
-
-	virtual void update()
+	case UP:
 	{
+		DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
+		break;
 	}
-};
+	case RIGHT:
+	{
+		pos.x += 32;
+		DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
+		break;
+	}
+	case DOWN:
+	{
+		pos.y += 32; pos.x += 32;
+		DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
+		break;
+	}
+	case LEFT:
+	{
+		pos.y += 32;
+		DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
+		break;
+	}
+	}
+}
 
-class Box : public Entity
+void Player::update()
 {
-public:
-	Texture2D flower;
-	bool onaswitch = false;
-	
-	void render()
+	if (IsKeyPressed(KEY_RIGHT))
 	{
-		float pixel_x = (position.x * 64) + 16;
-		float pixel_y = (position.y * 64) + 16;
-
-		DrawTexture(flower, (int)pixel_x, (int)pixel_y, WHITE);
-	}
-};
-
-class Player : public Entity
-{
-public:
-	Vector2 input = { 0,0 };
-	Texture2D Bee;
-	Sound beeMove;
-
-	void render()
-	{
-		Vector2 pos = { (position.x * 64) + 16, (position.y * 64) + 16 };
-		switch (face_directions)
-		{
-		case UP:
-		{
-			DrawTextureEx(Bee, pos, 0.f, 1.f, WHITE);
-			break;
-		}
-		case RIGHT:
-		{
-			pos.x += 32;
-			DrawTextureEx(Bee, pos, 90.f, 1.f, WHITE);
-			break;
-		}
-		case DOWN:
-		{
-			pos.y += 32; pos.x += 32;
-			DrawTextureEx(Bee, pos, 180.f, 1.f, WHITE);
-			break;
-		}
-		case LEFT:
-		{
-			pos.y += 32;
-			DrawTextureEx(Bee, pos, 270.f, 1.f, WHITE);
-			break;
-		}
-		}
+		input = { 1,0 };
+		face_directions = RIGHT;
+		PlaySoundMulti(beeMove);
 	}
 
-	void update()
+	if (IsKeyPressed(KEY_LEFT))
 	{
-		if (IsKeyPressed(KEY_RIGHT))
-		{
-			input = { 1,0 };
-			face_directions = RIGHT;
-			PlaySoundMulti(beeMove);
-		}
-
-		if (IsKeyPressed(KEY_LEFT))
-		{
-			input = { -1, 0 };
-			face_directions = LEFT;
-			PlaySoundMulti(beeMove);
-		}
-
-		if (IsKeyPressed(KEY_DOWN))
-		{
-			input = { 0, 1 };
-			face_directions = DOWN;
-			PlaySoundMulti(beeMove);
-		}
-
-		if (IsKeyPressed(KEY_UP))
-		{
-			input = { 0,-1 };
-			face_directions = UP;
-			PlaySoundMulti(beeMove);
-		}
+		input = { -1, 0 };
+		face_directions = LEFT;
+		PlaySoundMulti(beeMove);
 	}
 
-};
+	if (IsKeyPressed(KEY_DOWN))
+	{
+		input = { 0, 1 };
+		face_directions = DOWN;
+		PlaySoundMulti(beeMove);
+	}
+
+	if (IsKeyPressed(KEY_UP))
+	{
+		input = { 0,-1 };
+		face_directions = UP;
+		PlaySoundMulti(beeMove);
+	}
+}

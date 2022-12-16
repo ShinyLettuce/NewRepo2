@@ -2,8 +2,8 @@
 #include <vector>
 #include "raylib.h"
 #include "Media.h"
-#include "Entity.cpp"
-#include "Tile_system.cpp"
+#include "Entity.h"
+#include "Tile_system.h"
 
 
 class Level
