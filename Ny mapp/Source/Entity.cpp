@@ -1,6 +1,6 @@
 #pragma once
 #include "raylib.h"
-#include "Images.cpp"
+#include "Media.h"
 
 const enum face_directions
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "raylib.h"
-#include "Images.cpp"
+#include "Media.h"
 #include "Entity.cpp"
 #include "Tile_system.cpp"
 
