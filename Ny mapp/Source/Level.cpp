@@ -56,7 +56,6 @@ void Level::flowers_and_winning(Flower& b, int level_order)
 			isWon = true;
 			if (IsAudioDeviceReady)
 			{
-				Sound hurraa = images.get_sound(HURRAY);
 				PlaySoundMulti(hurraa);
 			}
 			else
@@ -123,7 +122,8 @@ void Level::game_init()
 
 void Level::media_loading()
 {
-	Sound beebg = images.get_sound(BEEBG);
+	hurraa = images.get_sound(HURRAY);
+	beebg = images.get_sound(BEEBG);
 	PlaySoundMulti(beebg);
 
 	pushFlower = images.get_sound(PUSH);
