@@ -155,52 +155,38 @@ void Level::level_init()
 
 	tiles.setTiles(level_order);
 
-	if (level_order == 1)
+	switch (level_order)
 	{
+	case 1:
 		playerBee.position = { 1,3 };
 
 		create_flower({ 4,3 });
 		create_flower({ 4,4 });
-
-	}
-	else if (level_order == 2)
-	{
+	case 2:
 		playerBee.position = { 6,5 };
 
 		create_flower({ 4,3 });
 		create_flower({ 3,4 });
-
-	}
-	else if (level_order == 3)
-	{
+	case 3:
 		playerBee.position = { 5,2 };
 
 		create_flower({ 3,3 });
 		create_flower({ 2,4 });
 		create_flower({ 3,5 });
-
-	}
-	else if (level_order == 4)
-	{
+	case 4:
 		playerBee.position = { 3,3 };
 
 		create_flower({ 2,2 });
 		create_flower({ 5,2 });
 		create_flower({ 2,5 });
 		create_flower({ 5,5 });
-
-	}
-	else if(level_order == 5)
-	{
+	case 5:
 		playerBee.position = { 1,1 };
 
 		create_flower({ 3,2 });
 		create_flower({ 3,3 });
 		create_flower({ 2,3 });
-
-	}
-	else if (level_order == 6)
-	{
+	case 6:
 		playerBee.position = { 6,3 };
 
 		create_flower({ 2,2 });
@@ -208,8 +194,8 @@ void Level::level_init()
 		create_flower({ 1,4 });
 		create_flower({ 5,2 });
 	}
-
 }
+
 
 void Level::level_update()
 {
