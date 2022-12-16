@@ -8,30 +8,27 @@
 
 class Level
 {
+	//Everything that the level should use but not the main menu is in the private part.
 	std::vector <Flower> flowers_in_level = {};
-	Texture2D flower = images.get_image(FLOWER);
 	Sound pushFlower;
 	Sound failFlower;
+
+	int flowers_on_switch = 0;
 	
 	void move_player(Player& p, Vector2 input);
 	void flowers_and_winning(Flower& b, int level_order);
 	bool move_flower(Flower & b, Vector2 input);
-	int currentlvl = 0;
+	void clear_entitylist_Flower();
+	void add_entity_Flower(const Flower& b);	
 
-public:
-	int flowers_on_switch = 0;
-	bool isWon = false;
+public:	
+	//Everything that the main menu should pass to level is public.
 	Media images;
-
 	Tile_system tiles;
 	Player playerBee;
-
-	int level_order = 0; 
-
-
-	void clear_entitylist_B();
-	void add_entity_Flower(const Flower& b);
 	
+	int level_order = 0;
+	bool isWon = false;	
 
 	void game_init();
 	void media_loading();

@@ -1,7 +1,109 @@
 #include "Level.h"
 #include <iostream>
 
-void Level::clear_entitylist_B()
+void Level::move_player(Player& p, Vector2 input)
+{
+	float newposx = playerBee.position.x + input.x;
+	float newposy = playerBee.position.y + input.y;
+
+	bool flower_stayed = false;
+
+	for (Flower& b : flowers_in_level)
+	{
+		if (newposx == b.position.x && newposy == b.position.y)
+		{
+			flower_stayed = move_flower(b, input);
+		}
+		if (flower_stayed)
+		{
+			break;
+		}
+	}
+
+	if (!flower_stayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+	{
+		p.position.x += input.x;
+		p.position.y += input.y;
+	}
+	return;
+}
+
+void Level::flowers_and_winning(Flower& b, int level_order)
+{
+	int win_condition = 0;
+	if (level_order == 1 || level_order == 2)
+	{
+		win_condition = 2;
+	}
+	if (level_order == 4)
+	{
+		win_condition = 4;
+	}
+	if (level_order == 3 || level_order == 5 || level_order == 6)
+	{
+		win_condition = 3;
+	}
+
+	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
+	{
+		if (!b.onaswitch)
+		{
+			flowers_on_switch += 1;
+			b.onaswitch = true;
+		}
+		if (flowers_on_switch == win_condition)
+		{
+			isWon = true;
+			if (IsAudioDeviceReady)
+			{
+				Sound hurraa = images.get_sound(HURRAY);
+				PlaySoundMulti(hurraa);
+			}
+			else
+			{
+				std::cout << "Audio device is not ready. :(" << std::endl;
+			}
+			std::cout << "Hurray!" << std::endl;
+
+		}
+	}
+	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
+	{
+		if (b.onaswitch)
+		{
+			flowers_on_switch -= 1;
+			b.onaswitch = false;
+		}
+	}
+}
+
+bool Level::move_flower(Flower& b, Vector2 input)
+{
+	float newposx = b.position.x + input.x;
+	float newposy = b.position.y + input.y;
+
+
+	for (const Flower& b : flowers_in_level)
+	{
+		if (newposx == b.position.x && newposy == b.position.y)
+		{
+			return true;
+		}
+	}
+	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0 || tiles.tiles[((int)newposx + (8 * (int)newposy))] == 3)
+	{
+		b.position.x += input.x;
+		b.position.y += input.y;
+		PlaySoundMulti(pushFlower);
+		flowers_and_winning(b, level_order);
+		return false;
+	}
+	else
+		PlaySoundMulti(failFlower);
+	return true;
+}
+
+void Level::clear_entitylist_Flower()
 {
 	flowers_in_level.clear();
 }
@@ -166,10 +268,8 @@ void Level::level_init()
 
 }
 
-
 void Level::level_update()
 {
-
 	if (IsKeyPressed(KEY_DELETE))
 	{
 		level_init();
@@ -179,108 +279,6 @@ void Level::level_update()
 
 	move_player(playerBee, playerBee.input);
 	playerBee.input = { 0,0 };
-}
-
-void Level::move_player(Player& p, Vector2 input)
-{
-	float newposx = playerBee.position.x + input.x;
-	float newposy = playerBee.position.y + input.y;
-
-	bool flower_stayed = false;
-	
-	for (Flower& b : flowers_in_level)
-	{
-		if (newposx == b.position.x && newposy == b.position.y)
-		{
-			flower_stayed = move_flower(b, input);
-		}
-		if (flower_stayed)
-		{
-			break;
-		}
-	}	
-	
-	if (!flower_stayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
-	{
-		p.position.x += input.x;
-		p.position.y += input.y;
-	}
-	return;
-}
-
-void Level::flowers_and_winning(Flower& b, int level_order)
-{
-	int win_condition = 0;
-	if (level_order == 1 || level_order == 2)
-	{
-		win_condition = 2;
-	}
-	if (level_order == 4)
-	{
-		win_condition = 4;
-	}
-	if (level_order == 3 || level_order == 5 || level_order == 6)
-	{
-		win_condition = 3;
-	}
-
-	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
-	{
-		if (!b.onaswitch)
-		{
-			flowers_on_switch += 1;
-			b.onaswitch = true;
-		}
-		if (flowers_on_switch == win_condition)
-		{
-			isWon = true;
-			if (IsAudioDeviceReady)
-			{
-				Sound hurraa = images.get_sound(HURRAY);
-				PlaySoundMulti(hurraa);
-			}
-			else
-			{
-				std::cout << "Audio device is not ready. :(" << std::endl;
-			}
-			std::cout << "Hurray!" << std::endl;
-
-		}
-	}
-	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
-	{
-		if (b.onaswitch)
-		{
-			flowers_on_switch -= 1;
-			b.onaswitch = false;
-		}
-	}
-}
-
-bool Level::move_flower(Flower& b, Vector2 input)
-{
-	float newposx = b.position.x + input.x;
-	float newposy = b.position.y + input.y;
-
-
-	for (const Flower& b : flowers_in_level)
-	{
-		if (newposx == b.position.x && newposy == b.position.y)
-		{
-			return true;
-		}
-	}
-	if (tiles.tiles[((int)newposx + (8 * (int)newposy))] == 0 || tiles.tiles[((int)newposx + (8 * (int)newposy))] == 3)
-	{
-		b.position.x += input.x;
-		b.position.y += input.y;
-		PlaySoundMulti(pushFlower);
-		flowers_and_winning(b, level_order);
-		return false;
-	}
-	else
-		PlaySoundMulti(failFlower);
-		return true;
 }
 
 void Level::level_render()
