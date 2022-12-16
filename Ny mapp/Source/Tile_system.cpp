@@ -1,9 +1,11 @@
 #pragma once
 #include "Tile_system.h"
 
-void Tile_system::render_level(int level_order)
+void Tile_system::render_level()
 {
-	//In order for us to create the proper tile system, we need to be able to check that created_tile is correct in the selected column (c) and row (r).
+	// In order for us render the levels, we go through each row (r) and column (c) of tiles[] and render each
+	// and depending on what type it is (number in the array) it renders different type of tile (floor, wall, etc)
+	// Since our game is completely based on tiles this was the easiest way to render the background / layouts
 	
 	int created_tile = 0;
 	int type;
@@ -29,6 +31,10 @@ void Tile_system::render_level(int level_order)
 		}
 	}
 }
+
+
+// In order to use more then one level, we need to have several arrays of the different levels, and a way to change between them.
+// setTiles() is  a function that replaces the old layout with the new level tiles in the tiles[] array.
 
 void Tile_system::setTiles(int activelevel)
 {

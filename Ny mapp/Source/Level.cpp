@@ -276,7 +276,7 @@ void Level::level_update()
 
 void Level::level_render()
 {
-	tiles.render_level(level_order);
+	tiles.render_level();
 	playerBee.render();
 	for (Flower b : flowers_in_level)
 	{
