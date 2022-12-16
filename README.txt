@@ -36,3 +36,12 @@ Sound Design:
 Bee's movement - Nom's voice
 Flower's failed movement and the level victory screen - Erik's voice
 Other sounds: (insert link here)
+
+Code logic:
+(Tile system)
+The game's 8x8 tile system is based on an array with 64 elements, every index represents a tile in the game and contains
+a value that decides its properties. The array "tiles" decides what is being rendered on screen and when the rendered tile system changes, "tiles" gets
+overwritten with one of the stored arrays in the Tile_system class.
+
+(Game states: levels, main menu)
+The main menu, the gameplay and the win screen are managed by a stack in main.cpp that pushes and pops the different game states. When the player moves to a level from the main menu, the variable "level_order" is changed accordingly which affects what level is drawn, how many flowers are rendered and the position of all entities. There are two initializing functions, game_init and level_init, the first one initializes the game itself and the main menu while the other one initialized the levels.
