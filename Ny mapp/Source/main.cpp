@@ -93,7 +93,7 @@ void main_menu_frame(Level* level)
     DrawText("3", 220, 208, 32, BLACK);
     DrawText("4", 284, 208, 32, WHITE);
     DrawText("5", 348, 208, 32, BLACK);
-    DrawText("6", 412, 208, 32, BLACK);
+    DrawText("6", 412, 208, 32, WHITE);
 }
 
 void win_screen_frame(Level* level)

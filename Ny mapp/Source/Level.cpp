@@ -137,7 +137,7 @@ void Level::level_init()
 	}
 	else if (level_order == 6)
 	{
-		mario.position = { 1,1 };
+		mario.position = { 6,3 };
 		Box new_box_1;
 		new_box_1.position = { 2,2 };
 		new_box_1.flower = images.get_image(FLOWER);
