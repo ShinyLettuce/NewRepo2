@@ -13,8 +13,8 @@ void Media::init_media()
 	hurray = LoadSound("hurray.wav");
 	beeBgSound = LoadSound("beeBackgroundSound.mp3");
 	beeMove = LoadSound("bzzz.mp3");
-	pushBox = LoadSound("push.mp3");
-	failBox = LoadSound("Hups.ogg");
+	pushFlower = LoadSound("push.mp3");
+	failFlower = LoadSound("Hups.ogg");
 }
 
 Texture2D Media::get_image(enum request item)
@@ -47,8 +47,8 @@ Sound Media::get_sound(enum request item)
 	case BEEMOVE:
 		return beeMove;
 	case PUSH:
-		return pushBox;
+		return pushFlower;
 	case FAIL:
-		return failBox;
+		return failFlower;
 	}
 }

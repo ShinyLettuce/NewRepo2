@@ -24,8 +24,8 @@ class Media
 	Sound hurray;
 	Sound beeBgSound;
 	Sound beeMove;
-	Sound pushBox;
-	Sound failBox;
+	Sound pushFlower;
+	Sound failFlower;
 
 public:
 

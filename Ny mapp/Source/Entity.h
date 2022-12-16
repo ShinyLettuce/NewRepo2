@@ -27,7 +27,7 @@ public:
 	}
 };
 
-class Box : public Entity
+class Flower : public Entity
 {
 public:
 	Texture2D flower;

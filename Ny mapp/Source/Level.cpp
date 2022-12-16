@@ -3,18 +3,18 @@
 
 void Level::clear_entitylist_B()
 {
-	boxes_in_level.clear();
+	flowers_in_level.clear();
 }
 
-void Level::add_entity_B(const Box& b)
+void Level::add_entity_Flower(const Flower& b)
 {
-	boxes_in_level.push_back(b);
+	flowers_in_level.push_back(b);
 }
 
 void Level::game_init()
 {
 	level_order = 0;
-	mario.position = { 3,4 };
+	playerBee.position = { 3,4 };
 	Sound beebg = images.get_sound(BEEBG);
 	PlaySoundMulti(beebg);
 	isWon = false;
@@ -23,136 +23,136 @@ void Level::game_init()
 
 void Level::level_init()
 {
-	pushBox = images.get_sound(PUSH);
-	failBox = images.get_sound(FAIL);
-	boxes_on_switch = 0;
+	pushFlower = images.get_sound(PUSH);
+	failFlower = images.get_sound(FAIL);
+	flowers_on_switch = 0;
 	tiles.tile_images = images;
 	tiles.honeycomb = images.get_image(HONEYCOMB);
 	tiles.flower = images.get_image(FLOWER);
-	boxes_in_level.clear();
+	flowers_in_level.clear();
 
-	mario.Bee = images.get_image(BEE);
-	mario.beeMove = images.get_sound(BEEMOVE);
+	playerBee.Bee = images.get_image(BEE);
+	playerBee.beeMove = images.get_sound(BEEMOVE);
 
-	mario.face_directions = UP;
+	playerBee.face_directions = UP;
 
 	if (level_order == 1)
 	{
-		mario.position = { 1,3 };
+		playerBee.position = { 1,3 };
 
-		Box new_box_1;
-		new_box_1.position = { 4,3 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		Flower new_flower_1;
+		new_flower_1.position = { 4,3 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 4,4 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 4,4 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
 	}
 	else if (level_order == 2)
 	{
-		mario.position = { 6,5 };
+		playerBee.position = { 6,5 };
 
-		Box new_box_1;
-		new_box_1.position = { 4,3 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		Flower new_flower_1;
+		new_flower_1.position = { 4,3 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 3,4 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 3,4 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
 	}
 	else if (level_order == 3)
 	{
-		mario.position = { 5,2 };
+		playerBee.position = { 5,2 };
 
-		Box new_box_1;
-		new_box_1.position = { 3,3 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		Flower new_flower_1;
+		new_flower_1.position = { 3,3 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 2,4 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 2,4 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
-		Box new_box_3;
-		new_box_3.position = { 3,5 };
-		new_box_3.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_3);
+		Flower new_flower_3;
+		new_flower_3.position = { 3,5 };
+		new_flower_3.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_3);
 
 	}
 	else if (level_order == 4)
 	{
-		mario.position = { 3,3 };
+		playerBee.position = { 3,3 };
 
-		Box new_box_1;
-		new_box_1.position = { 2,2 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		Flower new_flower_1;
+		new_flower_1.position = { 2,2 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 5,2 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 5,2 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
-		Box new_box_3;
-		new_box_3.position = { 2,5 };
-		new_box_3.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_3);
+		Flower new_flower_3;
+		new_flower_3.position = { 2,5 };
+		new_flower_3.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_3);
 
-		Box new_box_4;
-		new_box_4.position = { 5,5 };
-		new_box_4.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_4);
+		Flower new_flower_4;
+		new_flower_4.position = { 5,5 };
+		new_flower_4.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_4);
 
 	}
 	else if(level_order == 5)
 	{
-		mario.position = { 1,1 };
+		playerBee.position = { 1,1 };
 
-		Box new_box_1;
-		new_box_1.position = { 3,2 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		Flower new_flower_1;
+		new_flower_1.position = { 3,2 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 3,3 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 3,3 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
-		Box new_box_3;
-		new_box_3.position = { 2,3 };
-		new_box_3.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_3);
+		Flower new_flower_3;
+		new_flower_3.position = { 2,3 };
+		new_flower_3.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_3);
 
 	}
 	else if (level_order == 6)
 	{
-		mario.position = { 6,3 };
-		Box new_box_1;
-		new_box_1.position = { 2,2 };
-		new_box_1.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_1);
+		playerBee.position = { 6,3 };
+		Flower new_flower_1;
+		new_flower_1.position = { 2,2 };
+		new_flower_1.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_1);
 
-		Box new_box_2;
-		new_box_2.position = { 2,3 };
-		new_box_2.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_2);
+		Flower new_flower_2;
+		new_flower_2.position = { 2,3 };
+		new_flower_2.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_2);
 
-		Box new_box_3;
-		new_box_3.position = { 1,4 };
-		new_box_3.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_3);
+		Flower new_flower_3;
+		new_flower_3.position = { 1,4 };
+		new_flower_3.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_3);
 
-		Box new_box_4;
-		new_box_4.position = { 5,2 };
-		new_box_4.flower = images.get_image(FLOWER);
-		add_entity_B(new_box_4);
+		Flower new_flower_4;
+		new_flower_4.position = { 5,2 };
+		new_flower_4.flower = images.get_image(FLOWER);
+		add_entity_Flower(new_flower_4);
 	}
 
 }
@@ -166,32 +166,32 @@ void Level::level_update()
 		level_init();
 	}
 
-	mario.update();
+	playerBee.update();
 
-	move_player(mario, mario.input);
-	mario.input = { 0,0 };
+	move_player(playerBee, playerBee.input);
+	playerBee.input = { 0,0 };
 }
 
 void Level::move_player(Player& p, Vector2 input)
 {
-	float newposx = mario.position.x + input.x;
-	float newposy = mario.position.y + input.y;
+	float newposx = playerBee.position.x + input.x;
+	float newposy = playerBee.position.y + input.y;
 
-	bool boxstayed = false;
+	bool flower_stayed = false;
 	
-	for (Box& b : boxes_in_level)
+	for (Flower& b : flowers_in_level)
 	{
 		if (newposx == b.position.x && newposy == b.position.y)
 		{
-			boxstayed = move_box(b, input);
+			flower_stayed = move_flower(b, input);
 		}
-		if (boxstayed)
+		if (flower_stayed)
 		{
 			break;
 		}
 	}	
 	
-	if (!boxstayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
+	if (!flower_stayed && tiles.tiles[((int)newposx + (8 * (int)newposy))] != 1)
 	{
 		p.position.x += input.x;
 		p.position.y += input.y;
@@ -199,7 +199,7 @@ void Level::move_player(Player& p, Vector2 input)
 	return;
 }
 
-void Level::boxes_winning(Box& b, int level_order)
+void Level::flowers_and_winning(Flower& b, int level_order)
 {
 	int win_condition = 0;
 	if (level_order == 1 || level_order == 2)
@@ -219,10 +219,10 @@ void Level::boxes_winning(Box& b, int level_order)
 	{
 		if (!b.onaswitch)
 		{
-			boxes_on_switch += 1;
+			flowers_on_switch += 1;
 			b.onaswitch = true;
 		}
-		if (boxes_on_switch == win_condition)
+		if (flowers_on_switch == win_condition)
 		{
 			isWon = true;
 			if (IsAudioDeviceReady)
@@ -242,19 +242,19 @@ void Level::boxes_winning(Box& b, int level_order)
 	{
 		if (b.onaswitch)
 		{
-			boxes_on_switch -= 1;
+			flowers_on_switch -= 1;
 			b.onaswitch = false;
 		}
 	}
 }
 
-bool Level::move_box(Box& b, Vector2 input)
+bool Level::move_flower(Flower& b, Vector2 input)
 {
 	float newposx = b.position.x + input.x;
 	float newposy = b.position.y + input.y;
 
 
-	for (const Box& b : boxes_in_level)
+	for (const Flower& b : flowers_in_level)
 	{
 		if (newposx == b.position.x && newposy == b.position.y)
 		{
@@ -265,20 +265,20 @@ bool Level::move_box(Box& b, Vector2 input)
 	{
 		b.position.x += input.x;
 		b.position.y += input.y;
-		PlaySoundMulti(pushBox);
-		boxes_winning(b, level_order);
+		PlaySoundMulti(pushFlower);
+		flowers_and_winning(b, level_order);
 		return false;
 	}
 	else
-		PlaySoundMulti(failBox);
+		PlaySoundMulti(failFlower);
 		return true;
 }
 
 void Level::level_render()
 {
 	tiles.render_level(level_order);
-	mario.render();
-	for (Box b : boxes_in_level)
+	playerBee.render();
+	for (Flower b : flowers_in_level)
 	{
 		b.render();
 	}

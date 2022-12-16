@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 
-void Box::render()
+void Flower::render()
 {
 	float pixel_x = (position.x * 64) + 16;
 	float pixel_y = (position.y * 64) + 16;

@@ -46,37 +46,37 @@ void main_menu_frame(Level* level)
 {
     
     
-    if (level->mario.position.x == 1 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 1 && level->playerBee.position.y == 3)
     {
         level->level_order = 1;
         level->level_init();
         states.push(State::GAME);
     }
-    if (level->mario.position.x == 2 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 2 && level->playerBee.position.y == 3)
     {
         level->level_order = 2;
         level->level_init();
         states.push(State::GAME);
     }
-    if (level->mario.position.x == 3 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 3 && level->playerBee.position.y == 3)
     {
         level->level_order = 3;
         level->level_init();
         states.push(State::GAME);
     }
-    if (level->mario.position.x == 4 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 4 && level->playerBee.position.y == 3)
     {
         level->level_order = 4;
         level->level_init();
         states.push(State::GAME);
     }
-    if (level->mario.position.x == 5 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 5 && level->playerBee.position.y == 3)
     {
         level->level_order = 5;
         level->level_init();
         states.push(State::GAME);
     }
-    if (level->mario.position.x == 6 && level->mario.position.y == 3)
+    if (level->playerBee.position.x == 6 && level->playerBee.position.y == 3)
     {
         level->level_order = 6;
         level->level_init();
