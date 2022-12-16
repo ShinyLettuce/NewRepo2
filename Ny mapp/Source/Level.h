@@ -15,6 +15,7 @@ class Level
 
 	int flowers_on_switch = 0;
 	
+	void create_flower(Vector2 position);
 	void move_player(Player& p, Vector2 input);
 	void flowers_and_winning(Flower& b, int level_order);
 	bool move_flower(Flower & b, Vector2 input);

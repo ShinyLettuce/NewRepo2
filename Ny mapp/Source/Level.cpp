@@ -1,6 +1,14 @@
 #include "Level.h"
 #include <iostream>
 
+void Level::create_flower(Vector2 position)
+{
+	Flower new_flower;
+	new_flower.position = { position.x,position.y };
+	new_flower.flower = images.get_image(FLOWER);
+	add_entity_Flower(new_flower);
+}
+
 void Level::move_player(Player& p, Vector2 input)
 {
 	float newposx = playerBee.position.x + input.x;
@@ -151,15 +159,8 @@ void Level::level_init()
 	{
 		playerBee.position = { 1,3 };
 
-		Flower new_flower_1;
-		new_flower_1.position = { 4,3 };
-		new_flower_1.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_1);
-
-		Flower new_flower_2;
-		new_flower_2.position = { 4,4 };
-		new_flower_2.flower = images.get_image(FLOWER);
-		add_entity_Flower(new_flower_2);
+		create_flower({ 4,3 });
+		create_flower({ 4,4 });
 
 	}
 	else if (level_order == 2)
