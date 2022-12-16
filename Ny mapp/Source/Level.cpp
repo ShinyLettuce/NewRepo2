@@ -54,12 +54,12 @@ void Level::flowers_and_winning(Flower& b, int level_order)
 
 	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] == 3)
 	{
-		if (!b.onaswitch)
+		if (!b.on_a_button)
 		{
-			flowers_on_switch += 1;
-			b.onaswitch = true;
+			flowers_on_button += 1;
+			b.on_a_button = true;
 		}
-		if (flowers_on_switch == win_condition)
+		if (flowers_on_button == win_condition)
 		{
 			isWon = true;
 			PlaySoundMulti(hurraa);
@@ -69,10 +69,10 @@ void Level::flowers_and_winning(Flower& b, int level_order)
 	}
 	if (tiles.tiles[((int)b.position.x + (8 * (int)b.position.y))] != 3)
 	{
-		if (b.onaswitch)
+		if (b.on_a_button)
 		{
-			flowers_on_switch -= 1;
-			b.onaswitch = false;
+			flowers_on_button -= 1;
+			b.on_a_button = false;
 		}
 	}
 }
@@ -141,7 +141,7 @@ void Level::media_loading()
 
 void Level::level_init()
 {
-	flowers_on_switch = 0;
+	flowers_on_button = 0;
 	flowers_in_level.clear();
 
 	playerBee.face_directions = UP;
@@ -155,17 +155,20 @@ void Level::level_init()
 
 		create_flower({ 4,3 });
 		create_flower({ 4,4 });
+		break;
 	case 2:
 		playerBee.position = { 6,5 };
 
 		create_flower({ 4,3 });
 		create_flower({ 3,4 });
+		break;
 	case 3:
 		playerBee.position = { 5,2 };
 
 		create_flower({ 3,3 });
 		create_flower({ 2,4 });
 		create_flower({ 3,5 });
+		break;
 	case 4:
 		playerBee.position = { 3,3 };
 
@@ -173,12 +176,14 @@ void Level::level_init()
 		create_flower({ 5,2 });
 		create_flower({ 2,5 });
 		create_flower({ 5,5 });
+		break;
 	case 5:
 		playerBee.position = { 1,1 };
 
 		create_flower({ 3,2 });
 		create_flower({ 3,3 });
 		create_flower({ 2,3 });
+		break;
 	case 6:
 		playerBee.position = { 6,3 };
 
@@ -186,6 +191,7 @@ void Level::level_init()
 		create_flower({ 2,3 });
 		create_flower({ 1,4 });
 		create_flower({ 5,2 });
+		break;
 	}
 }
 
@@ -196,9 +202,7 @@ void Level::level_update()
 	{
 		level_init();
 	}
-
 	playerBee.update();
-
 	move_player(playerBee, playerBee.input);
 	playerBee.input = { 0,0 };
 }

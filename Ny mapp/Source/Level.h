@@ -15,7 +15,7 @@ class Level
 	Sound pushFlower;
 	Sound failFlower;
 
-	int flowers_on_switch = 0;
+	int flowers_on_button = 0;
 	
 	void create_flower(Vector2 position);
 	void move_player(Player& p, Vector2 input);

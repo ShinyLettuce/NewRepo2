@@ -31,7 +31,7 @@ class Flower : public Entity
 {
 public:
 	Texture2D flower;
-	bool onaswitch = false;
+	bool on_a_button = false;
 
 	void render();
 };

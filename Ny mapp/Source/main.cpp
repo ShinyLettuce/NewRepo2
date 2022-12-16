@@ -3,6 +3,7 @@
 #include "Media.h"
 
 #include <stack>
+#include <iostream>
 
 enum class State
 {
@@ -42,51 +43,20 @@ void game_frame(Level* level)
     DrawText("Press Del to retry", 32, 464, 32, BLACK);
 }
 
-void main_menu_frame(Level* level)
+void load_level(Level* level, int player_position)
 {
-    
-    
-    if (level->playerBee.position.x == 1 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 1;
-        level->level_init();
-        states.push(State::GAME);
-    }
-    if (level->playerBee.position.x == 2 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 2;
-        level->level_init();
-        states.push(State::GAME);
-    }
-    if (level->playerBee.position.x == 3 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 3;
-        level->level_init();
-        states.push(State::GAME);
-    }
-    if (level->playerBee.position.x == 4 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 4;
-        level->level_init();
-        states.push(State::GAME);
-    }
-    if (level->playerBee.position.x == 5 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 5;
-        level->level_init();
-        states.push(State::GAME);
-    }
-    if (level->playerBee.position.x == 6 && level->playerBee.position.y == 3)
-    {
-        level->level_order = 6;
-        level->level_init();
-        states.push(State::GAME);
-    }
+    level->level_order = player_position;
+    level->level_init();
+    states.push(State::GAME);
+    std::cout << level->level_order << std::endl;
+}
 
+void main_menu_frame(Level* level)
+{        
     level->level_render();
     level->level_update();
     DrawText("Bee Game", 110, 64, 64, WHITE);
-    DrawText("Move to 1-5", 160, 128, 32, WHITE);
+    DrawText("Move to 1-6", 160, 128, 32, WHITE);
     DrawText("to start a level", 128, 160, 32, WHITE);
     DrawText("1", 92, 208, 32, BLACK);
     DrawText("2", 156, 208, 32, WHITE);
@@ -94,6 +64,10 @@ void main_menu_frame(Level* level)
     DrawText("4", 284, 208, 32, WHITE);
     DrawText("5", 348, 208, 32, BLACK);
     DrawText("6", 412, 208, 32, WHITE);
+    if (level->playerBee.position.y == 3)
+    {
+        load_level(level, (int)level->playerBee.position.x);
+    }
 }
 
 void win_screen_frame(Level* level)
@@ -158,8 +132,7 @@ int main(void)
         State current_state = states.top();
 
         switch (current_state)
-        {
-            
+        {            
             case State::MAIN_MENU:
                 main_menu_frame(&level);
             break;
