@@ -54,14 +54,7 @@ void Level::flowers_and_winning(Flower& b, int level_order)
 		if (flowers_on_switch == win_condition)
 		{
 			isWon = true;
-			if (IsAudioDeviceReady)
-			{
-				PlaySoundMulti(hurraa);
-			}
-			else
-			{
-				std::cout << "Audio device is not ready. :(" << std::endl;
-			}
+			PlaySoundMulti(hurraa);
 			std::cout << "Hurray!" << std::endl;
 
 		}
