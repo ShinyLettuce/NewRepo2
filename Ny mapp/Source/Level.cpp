@@ -131,7 +131,7 @@ void Level::media_loading()
 	failFlower = images.get_sound(FAIL);
 
 	tiles.honeycomb = images.get_image(HONEYCOMB);
-	tiles.flower = images.get_image(FLOWER);
+	tiles.flower_button = images.get_image(FLOWER);
 
 	playerBee.Bee = images.get_image(BEE);
 	playerBee.beeMove = images.get_sound(BEEMOVE);

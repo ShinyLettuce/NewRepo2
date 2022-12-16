@@ -7,7 +7,7 @@ class Tile_system
 public:
 	Media tile_images;
 	Texture2D honeycomb;
-	Texture2D flower;
+	Texture2D flower_button;
 
 	static const int size = 64;
 	const int cols = 8;
