@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 
+//Media class is used to control the media loading only once, since it felt to be easiest way to fix the issue whenever the game initialized, all images were loaded again.
+
 enum request
 {
 	BEE,
