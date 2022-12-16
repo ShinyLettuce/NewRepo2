@@ -76,6 +76,12 @@ void main_menu_frame(Level* level)
         level->level_init();
         states.push(State::GAME);
     }
+    if (level->mario.position.x == 6 && level->mario.position.y == 3)
+    {
+        level->level_order = 6;
+        level->level_init();
+        states.push(State::GAME);
+    }
 
     level->level_render();
     level->level_update();
@@ -87,6 +93,7 @@ void main_menu_frame(Level* level)
     DrawText("3", 220, 208, 32, BLACK);
     DrawText("4", 284, 208, 32, WHITE);
     DrawText("5", 348, 208, 32, BLACK);
+    DrawText("6", 412, 208, 32, WHITE);
 }
 
 void win_screen_frame(Level* level)

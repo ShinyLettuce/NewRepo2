@@ -77,6 +77,15 @@ public:
 						1,1,2,2,2,2,2,1,
 						1,1,1,1,1,1,1,1 };
 
+	int level6_[64] = {	1,1,1,1,1,1,1,1,
+						1,2,2,0,0,2,2,1,
+						1,2,0,0,0,0,2,1,
+						1,0,0,2,1,0,0,1,
+						1,0,0,1,2,0,3,1,
+						1,2,0,0,0,3,2,1,
+						1,2,2,0,3,2,2,1,
+						1,1,1,1,1,1,1,1 };
+
 	Color GetColor(int type)
 	{
 		if (type == 3)
@@ -128,6 +137,10 @@ public:
 				if (level_order == 5)
 				{
 					setTiles(level5_);
+				}
+				if (level_order == 6)
+				{
+					setTiles(level6_);
 				}
 				
 				int  type = tiles[allyourbase];
