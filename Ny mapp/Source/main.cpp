@@ -40,7 +40,8 @@ void game_frame(Level* level)
     update(level);
     render(level);
 
-    DrawText("Press Del to retry", 32, 464, 32, BLACK);
+    DrawText("Press Del to retry", 32, 448, 24, BLACK);
+    DrawText("Press Home to return to main menu", 32, 480, 24, BLACK);
 }
 
 void load_level(Level* level, int player_position)
