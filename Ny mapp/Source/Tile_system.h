@@ -4,23 +4,9 @@
 
 class Tile_system
 {
-public:
-	Media tile_images;
-	Texture2D honeycomb;
-	Texture2D flower_button;
-
 	static const int size = 64;
 	const int cols = 8;
 	const int rows = 8;
-
-	int tiles[64] = { 1,1,1,1,1,1,1,1
-					 ,1,2,2,0,0,2,2,1
-					 ,1,2,0,0,0,0,2,1
-					 ,1,0,0,2,1,0,0,1
-					 ,1,0,0,1,2,0,3,1
-					 ,1,2,0,0,0,0,2,1
-					 ,1,2,2,0,3,2,2,1
-					 ,1,1,1,1,1,1,1,1 };
 
 	int mainMenu_[64] = { 1,1,1,1,1,1,1,1
 						 ,1,0,0,0,0,0,0,1
@@ -85,6 +71,21 @@ public:
 						1,2,0,0,0,3,2,1,
 						1,2,2,0,3,2,2,1,
 						1,1,1,1,1,1,1,1 };
+
+	
+public:
+	Media tile_images;
+	Texture2D honeycomb;
+	Texture2D flower_button;
+
+	int tiles[64] = { 1,1,1,1,1,1,1,1
+					 ,1,2,2,0,0,2,2,1
+					 ,1,2,0,0,0,0,2,1
+					 ,1,0,0,2,1,0,0,1
+					 ,1,0,0,1,2,0,3,1
+					 ,1,2,0,0,0,0,2,1
+					 ,1,2,2,0,3,2,2,1
+					 ,1,1,1,1,1,1,1,1 };
 
 	void render_level();
 
