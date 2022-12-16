@@ -3,7 +3,6 @@
 #include "Media.h"
 
 #include <stack>
-#include <iostream>
 
 enum class State
 {
@@ -49,7 +48,6 @@ void load_level(Level* level, int player_position)
     level->level_order = player_position;
     level->level_init();
     states.push(State::GAME);
-    std::cout << level->level_order << std::endl;
 }
 
 void main_menu_frame(Level* level)
