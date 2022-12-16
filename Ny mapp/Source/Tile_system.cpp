@@ -19,12 +19,12 @@ void Tile_system::render_level()
 
 			if (type == 3)
 			{
-				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), GRAY);
-				DrawTexture(flower_button, 16 + 64 * r, 16 + 64 * c, DARKGRAY);
+				DrawTexture(honeycomb,		(size * r),		 (size * c), GRAY);
+				DrawTexture(flower_button,	(size * r) + 16, (size * c) + 16, DARKGRAY);
 			}
 			else
 			{
-				DrawTexture(honeycomb, 0 + size * r, 0 + (size * c), colour[type]);
+				DrawTexture(honeycomb,		(size * r),		 (size * c), colour[type]);
 			}
 
 			created_tile++;
