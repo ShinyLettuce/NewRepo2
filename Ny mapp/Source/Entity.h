@@ -12,10 +12,10 @@ const enum face_directions
 
 class Entity
 {
+	//int size = 32;
 public:
 	Media entity_images;
-	Vector2 position = { 1.f,1.f };
-	int size = 32;
+	Vector2 position = { 1.f,1.f };	
 	int face_directions = UP;
 
 	virtual void render()
