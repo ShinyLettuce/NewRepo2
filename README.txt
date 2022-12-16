@@ -17,7 +17,7 @@ Tile based game play mechanics, movements and the main menu were based on Jacob'
 Art and texture loading were based on Nom's initial code.
 Logic of level's flower data storage, flower movement and victory conditions were based on Erik's initial code.
 In the end product, every group member had a role on optimizing and merging additions to match the wanted outcome.
-All levels were based on (insert original idea) and optimized by each group member.
+All levels were based on Sokoban or original designs by Nom, and optimized by each group member.
 
 
 Controls:
