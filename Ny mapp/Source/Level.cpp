@@ -39,7 +39,6 @@ void Level::media_loading()
 void Level::level_init()
 {
 	flowers_on_switch = 0;
-
 	flowers_in_level.clear();
 
 	playerBee.face_directions = UP;
