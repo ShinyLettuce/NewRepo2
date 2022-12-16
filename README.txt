@@ -44,4 +44,7 @@ a value that decides its properties. The array "tiles" decides what is being ren
 overwritten with one of the stored arrays in the Tile_system class.
 
 (Game states: levels, main menu)
-The main menu, the gameplay and the win screen are managed by a stack in main.cpp that pushes and pops the different game states. When the player moves to a level from the main menu, the variable "level_order" is changed accordingly which affects what level is drawn, how many flowers are rendered and the position of all entities. There are two initializing functions, game_init and level_init, the first one initializes the game itself and the main menu while the other one initialized the levels.
+The main menu, the gameplay and the win screen are managed by a stack in main.cpp that pushes and pops the different game states. When the player moves to a level from
+the main menu, the variable "level_order" is changed accordingly which affects what level is drawn, how many flowers are rendered and the position of all entities.
+There are two initializing functions, game_init and level_init, the first one initializes the game itself and the main menu while the other one initialized the levels.
+
