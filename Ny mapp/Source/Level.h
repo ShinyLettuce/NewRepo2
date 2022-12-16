@@ -10,6 +10,8 @@ class Level
 {
 	//Everything that the level should use but not the main menu is in the private part.
 	std::vector <Flower> flowers_in_level = {};
+	Sound hurraa;
+	Sound beebg;
 	Sound pushFlower;
 	Sound failFlower;
 
