@@ -10,7 +10,7 @@ void Media::init_media()
 
 	//Sound Effects:
 	InitAudioDevice();
-	hurray = LoadSound("hurray.wav");
+	hurray = LoadSound("Hurray.ogg");
 	beeBgSound = LoadSound("beeBackgroundSound.mp3");
 	beeMove = LoadSound("bzzz.mp3");
 	pushFlower = LoadSound("push.mp3");
