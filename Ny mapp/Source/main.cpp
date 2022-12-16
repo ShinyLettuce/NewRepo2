@@ -128,10 +128,10 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Bee Game");
     SetWindowIcon(beeIcon);
     
-    BeginDrawing();
+    //BeginDrawing();
     Media initial_media;
     initial_media.init_media();
-    EndDrawing();
+    //EndDrawing();
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
