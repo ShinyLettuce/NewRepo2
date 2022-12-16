@@ -36,6 +36,8 @@ void Level::level_init()
 
 	mario.face_directions = UP;
 
+	tiles.setTiles(level_order);
+
 	if (level_order == 1)
 	{
 		mario.position = { 1,3 };

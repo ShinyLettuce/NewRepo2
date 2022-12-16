@@ -88,5 +88,5 @@ public:
 
 	void render_level(int level_order);
 
-	void setTiles(int tiles_[]);
+	void setTiles(int level);
 };
