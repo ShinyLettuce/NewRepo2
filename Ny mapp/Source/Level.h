@@ -34,6 +34,7 @@ public:
 	
 
 	void game_init();
+	void media_loading();
 
 	void level_init();
 	void level_update();

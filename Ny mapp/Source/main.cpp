@@ -138,8 +138,9 @@ int main(void)
     
     Level level;
     level.images = initial_media;
+    level.media_loading();
     level.game_init();
-    
+
     states.push(State::MAIN_MENU);
     
 

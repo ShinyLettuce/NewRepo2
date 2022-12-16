@@ -15,24 +15,32 @@ void Level::game_init()
 {
 	level_order = 0;
 	playerBee.position = { 3,4 };
-	Sound beebg = images.get_sound(BEEBG);
-	PlaySoundMulti(beebg);
 	isWon = false;
 	level_init();
 }
 
-void Level::level_init()
+void Level::media_loading()
 {
+	Sound beebg = images.get_sound(BEEBG);
+	PlaySoundMulti(beebg);
+
 	pushFlower = images.get_sound(PUSH);
 	failFlower = images.get_sound(FAIL);
-	flowers_on_switch = 0;
-	tiles.tile_images = images;
+
 	tiles.honeycomb = images.get_image(HONEYCOMB);
 	tiles.flower = images.get_image(FLOWER);
-	flowers_in_level.clear();
 
 	playerBee.Bee = images.get_image(BEE);
 	playerBee.beeMove = images.get_sound(BEEMOVE);
+
+	tiles.tile_images = images;
+}
+
+void Level::level_init()
+{
+	flowers_on_switch = 0;
+
+	flowers_in_level.clear();
 
 	playerBee.face_directions = UP;
 
